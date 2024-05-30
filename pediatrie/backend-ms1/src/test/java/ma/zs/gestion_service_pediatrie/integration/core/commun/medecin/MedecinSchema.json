@@ -1,0 +1,26 @@
+{
+    "ref": "#string",
+    "email": "#string",
+    "nom": "#string",
+    "prenom": "#string",
+    "telephone": "#string",
+    "photoProfil": "#string",
+    "speciality": "#string",
+    "sexe": {"id": "#number"},
+    "credentialsNonExpired": "#bool",
+    "enabled": "#bool",
+    "accountNonExpired": "#bool",
+    "accountNonLocked": "#bool",
+    "passwordChanged": "#bool",
+    "username": "#string",
+    "password": "#string"
+
+}
+
+
+
+
+
+
+
+

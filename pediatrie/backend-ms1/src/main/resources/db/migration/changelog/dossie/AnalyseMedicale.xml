@@ -1,0 +1,67 @@
+<!-- db/changelog-1.1-container.xml -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <!-- Create Container Table -->
+    <changeSet id="1" author="your-name">
+    <createTable tableName="analyse_medicale">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+        <column name="ref" type="VARCHAR(500)"/>
+        <column name="date_analyse_medicale" type="TIMESTAMP"/>
+        <column name="valeur" type="NUMERIC"/>
+        <column name="valeur_rang" type="VARCHAR(500)"/>
+
+        <column name="epreuve_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="consultation_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+  </changeSet>
+
+    <!-- Add foreign key constraint -->
+  <changeSet id="2" author="your-name">
+      <addForeignKeyConstraint
+              baseTableName="analyse_medicale"
+              baseColumnNames="epreuve_id"
+              referencedTableName="epreuve"
+              referencedColumnNames="id"
+              constraintName="fk_analyse_medicale_epreuve"/>
+      <addForeignKeyConstraint
+              baseTableName="analyse_medicale"
+              baseColumnNames="consultation_id"
+              referencedTableName="consultation"
+              referencedColumnNames="id"
+              constraintName="fk_analyse_medicale_consultation"/>
+
+  </changeSet>
+
+    <!-- Create Sequence for ContainerType -->
+  <changeSet id="3" author="your-name">
+    <createSequence sequenceName="analyse_medicale_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <!-- Load Data from CSV -->
+  <changeSet id="4" author="your-name">
+    <loadData
+            file="classpath:/db/migration/data/dossie/AnalyseMedicale.csv"
+            tableName="analyse_medicale">
+      <column name="id" type="NUMERIC"/>
+          <column name="ref" type="STRING"/>
+          <column name="date_analyse_medicale" type="TIMESTAMP"/>
+          <column name="valeur" type="NUMERIC"/>
+          <column name="valeur_rang" type="STRING"/>
+        <column name="epreuve" type="BIGINT"/>
+        <column name="consultation" type="BIGINT"/>
+    </loadData>
+  </changeSet>
+
+
+</databaseChangeLog>

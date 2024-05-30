@@ -1,0 +1,71 @@
+<!-- db/changelog-1.1-container.xml -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <!-- Create Container Table -->
+    <changeSet id="1" author="your-name">
+    <createTable tableName="fiche_patient">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+        <column name="ref" type="VARCHAR(500)"/>
+        <column name="date_fiche_patient" type="TIMESTAMP"/>
+        <column name="antecedent_famillial" type="VARCHAR(500)"/>
+        <column name="histoire_maladie" type="VARCHAR(500)"/>
+        <column name="examen_fiche_patient" type="VARCHAR(500)"/>
+        <column name="conclusion_fiche_patient" type="VARCHAR(500)"/>
+
+        <column name="antecedent_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="consultation_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+  </changeSet>
+
+    <!-- Add foreign key constraint -->
+  <changeSet id="2" author="your-name">
+      <addForeignKeyConstraint
+              baseTableName="fiche_patient"
+              baseColumnNames="antecedent_id"
+              referencedTableName="antecedent"
+              referencedColumnNames="id"
+              constraintName="fk_fiche_patient_antecedent"/>
+      <addForeignKeyConstraint
+              baseTableName="fiche_patient"
+              baseColumnNames="consultation_id"
+              referencedTableName="consultation"
+              referencedColumnNames="id"
+              constraintName="fk_fiche_patient_consultation"/>
+
+  </changeSet>
+
+    <!-- Create Sequence for ContainerType -->
+  <changeSet id="3" author="your-name">
+    <createSequence sequenceName="fiche_patient_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <!-- Load Data from CSV -->
+  <changeSet id="4" author="your-name">
+    <loadData
+            file="classpath:/db/migration/data/dossie/FichePatient.csv"
+            tableName="fiche_patient">
+      <column name="id" type="NUMERIC"/>
+          <column name="ref" type="STRING"/>
+          <column name="date_fiche_patient" type="TIMESTAMP"/>
+          <column name="antecedent_famillial" type="STRING"/>
+          <column name="histoire_maladie" type="STRING"/>
+          <column name="examen_fiche_patient" type="STRING"/>
+          <column name="conclusion_fiche_patient" type="STRING"/>
+        <column name="antecedent" type="BIGINT"/>
+        <column name="consultation" type="BIGINT"/>
+    </loadData>
+  </changeSet>
+
+
+</databaseChangeLog>

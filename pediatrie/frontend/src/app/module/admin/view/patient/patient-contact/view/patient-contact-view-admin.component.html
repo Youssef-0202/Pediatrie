@@ -1,0 +1,56 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'patientContact.tabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'patientContact.tabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'patientContact.cin' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'patientContact.cin' | translate}}" autofocus  id="1" [ngModel]="item.cin">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'patientContact.email' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'patientContact.email' | translate}}" autofocus  id="2" [ngModel]="item.email">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'patientContact.nom' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'patientContact.nom' | translate}}" autofocus  id="3" [ngModel]="item.nom">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'patientContact.prenom' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'patientContact.prenom' | translate}}" autofocus  id="4" [ngModel]="item.prenom">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="5">{{'patientContact.telephone' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'patientContact.telephone' | translate}}" autofocus  id="5" [ngModel]="item.telephone">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="6">{{'patientContact.adresse' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'patientContact.adresse' | translate}}" autofocus  id="6" [ngModel]="item.adresse">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'patientContact.relation' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'patientContact.relation' | translate}}" autofocus  id="7" [ngModel]="item.relation?.ref">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="8">{{'patientContact.patient' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'patientContact.patient' | translate}}" autofocus  id="8" [ngModel]="item.patient?.numDossier">
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-flexbox">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

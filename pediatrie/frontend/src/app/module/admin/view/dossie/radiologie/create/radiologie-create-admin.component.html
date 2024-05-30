@@ -1,0 +1,77 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'radiologie.tabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'radiologie.tabPan' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="1">{{'radiologie.ref' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'radiologie.ref' | translate}}" id="1" [(ngModel)]="item.ref"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validRadiologieRef}"  />
+                                                    <small class='p-error' *ngIf='!validRadiologieRef'>Ref est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="2">{{'radiologie.dateRadiologie' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="2"  [showTime]="true" [showSeconds]="false" placeholder="{{'radiologie.dateRadiologie' | translate}}"  [(ngModel)]="item.dateRadiologie"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+
+                                                </div>
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="3">{{'radiologie.commentaire' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'radiologie.commentaire' | translate}}" id="3" [(ngModel)]="item.commentaire"
+                                                             />
+
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="4">{{'radiologie.imageScann' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'radiologie.imageScann' | translate}}" id="4" [(ngModel)]="item.imageScann"
+                                                             />
+
+                                                </div>
+
+
+
+                                            <div class="field col-11 md:col-6">
+                                                <label for="5">{{'radiologie.consultatuin' | translate}}</label>
+                                                <p-dropdown appendTo="body" [options]="consultatuins" [(ngModel)]="item.consultationDto" id="5" [filter]="true" filterMatchMode="contains"
+                                                            [showClear]="true" optionLabel="ref" placeholder="{{'radiologie.consultatuin' | translate}}"  >
+                                                </p-dropdown>
+
+                                            </div>
+
+                                            <div class="field col-11 md:col-6">
+                                                <label for="6">{{'radiologie.typeImage' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="typeImages" [(ngModel)]="item.typeImage" id="6" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="ref" placeholder="{{'radiologie.typeImage' | translate}}"  >
+                                                </p-dropdown>
+
+                                            </div>
+
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-flexbox">
+
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check"  (click)="save()"></button>
+
+
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+
+
+                </div>
+            </ng-template>
+
+    </p-dialog>

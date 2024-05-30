@@ -1,0 +1,69 @@
+<!-- db/changelog-1.1-container.xml -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <!-- Create Container Table -->
+    <changeSet id="1" author="your-name">
+    <createTable tableName="ordonnance">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+        <column name="ref" type="VARCHAR(500)"/>
+        <column name="nom_hospital" type="VARCHAR(500)"/>
+        <column name="date_ordonnance" type="TIMESTAMP"/>
+        <column name="adresse_hospitla" type="VARCHAR(500)"/>
+        <column name="signature" type="VARCHAR(500)"/>
+
+        <column name="traitement_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="consultatuin_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+  </changeSet>
+
+    <!-- Add foreign key constraint -->
+  <changeSet id="2" author="your-name">
+      <addForeignKeyConstraint
+              baseTableName="ordonnance"
+              baseColumnNames="traitement_id"
+              referencedTableName="traitement"
+              referencedColumnNames="id"
+              constraintName="fk_ordonnance_traitement"/>
+      <addForeignKeyConstraint
+              baseTableName="ordonnance"
+              baseColumnNames="consultatuin_id"
+              referencedTableName="consultatuin"
+              referencedColumnNames="id"
+              constraintName="fk_ordonnance_consultatuin"/>
+
+  </changeSet>
+
+    <!-- Create Sequence for ContainerType -->
+  <changeSet id="3" author="your-name">
+    <createSequence sequenceName="ordonnance_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <!-- Load Data from CSV -->
+  <changeSet id="4" author="your-name">
+    <loadData
+            file="classpath:/db/migration/data/gestio/Ordonnance.csv"
+            tableName="ordonnance">
+      <column name="id" type="NUMERIC"/>
+          <column name="ref" type="STRING"/>
+          <column name="nom_hospital" type="STRING"/>
+          <column name="date_ordonnance" type="TIMESTAMP"/>
+          <column name="adresse_hospitla" type="STRING"/>
+          <column name="signature" type="STRING"/>
+        <column name="traitement" type="BIGINT"/>
+        <column name="consultatuin" type="BIGINT"/>
+    </loadData>
+  </changeSet>
+
+
+</databaseChangeLog>

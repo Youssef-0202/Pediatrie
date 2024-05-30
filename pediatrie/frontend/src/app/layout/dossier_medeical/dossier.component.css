@@ -1,0 +1,14 @@
+.centered-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.photoPersonel{
+    width:200px;
+    height:100px;
+    background: url("src/assets/layout/images/bg-login-3.jpg") no-repeat;
+    position:relative;
+    left:370px;
+
+}

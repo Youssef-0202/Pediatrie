@@ -1,0 +1,15 @@
+{
+    "ref": "#string",
+    "description": "#string",
+    "nbrJour": "#number",
+    "consultatuin": {"id": "#number"}
+
+}
+
+
+
+
+
+
+
+

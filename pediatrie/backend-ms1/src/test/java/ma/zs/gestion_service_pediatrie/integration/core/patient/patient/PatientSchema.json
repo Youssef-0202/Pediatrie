@@ -1,0 +1,45 @@
+{
+    "numDossier": "#string",
+    "nom": "#string",
+    "prenom": "#string",
+    "photoProfil": "#string",
+    "sexe": {"id": "#number"},
+
+    "patientContact": [
+      {
+        "cin":"#string",}
+        "email":"#string",}
+        "nom":"#string",}
+        "prenom":"#string",}
+        "telephone":"#string",}
+        "adresse":"#string",}
+        "relation":{"id": "#number"}}
+      },
+      {
+        "cin":"#string",}
+        "email":"#string",}
+        "nom":"#string",}
+        "prenom":"#string",}
+        "telephone":"#string",}
+        "adresse":"#string",}
+        "relation":{"id": "#number"}}
+      },
+      {
+        "cin":"#string",}
+        "email":"#string",}
+        "nom":"#string",}
+        "prenom":"#string",}
+        "telephone":"#string",}
+        "adresse":"#string",}
+        "relation":{"id": "#number"}}
+      }
+    ]
+}
+
+
+
+
+
+
+
+

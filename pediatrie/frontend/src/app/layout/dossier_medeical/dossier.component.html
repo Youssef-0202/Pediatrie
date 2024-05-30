@@ -1,0 +1,382 @@
+<p-dialog
+    [(visible)]="showDossierDetails"
+    [style]="{width: '70vw', height:'50vw'}"
+    header="Dossier :  {{actualPationt?.numDossier}}"
+    [modal]="true"
+    styleClass="p-fluid"
+    [maximizable]="true"
+    [draggable]="false"
+    [resizable]="false"
+>
+    <ng-template pTemplate="content">
+        <p-tabView >
+            <p-tabPanel header="{{'Patient :' | translate}}" >
+                <p-toolbar styleClass="mb-4">
+                    <div class="photoPersonel"></div>
+                </p-toolbar>
+                <p-toolbar styleClass="mb-4">
+                    <p-table [value]="array"  class="table">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Prenom</th>
+                                <th>Nom</th>
+                                <th>Date de Naissance</th>
+                                <th>Sexe</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-element1>
+                            <tr>
+                                <td>{{element1.prenom}}</td>
+                                <td>{{element1.nom}}</td>
+                                <td>{{element1.dateNaissance | date : 'dd MMM yyyy'}}</td>
+                                <td>{{element1.sexe?.libelle}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </p-toolbar>
+                <p-toolbar>
+                    <div class="card" style="width:100%">
+                        <div class="flex justify-content-between align-items-center mb-5">
+                            <h5>Best Selling Products</h5>
+                            <div>
+                                <button pButton type="button" icon="pi pi-ellipsis-v" class="p-button-rounded p-button-text p-button-plain" ></button>
+                            </div>
+                        </div>
+                        <ul class="list-none p-0 m-0">
+                            <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                                <div>
+                                    <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Space T-Shirt</span>
+                                    <div class="mt-1 text-600">Clothing</div>
+                                </div>
+                                <div class="mt-2 md:mt-0 flex align-items-center">
+                                    <div class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem" [ngStyle]="{height: '8px'}">
+                                        <div class="bg-orange-500 h-full" [ngStyle]="{width: '50%'}"></div>
+                                    </div>
+                                    <span class="text-orange-500 ml-3 font-medium">%50</span>
+                                </div>
+                            </li>
+                            <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                                <div>
+                                    <span class="text-900 font-medium mr-2 mb-1 md:mb-0">Portal Sticker</span>
+                                    <div class="mt-1 text-600">Accessories</div>
+                                </div>
+                                <div class="mt-2 md:mt-0 ml-0 md:ml-8 flex align-items-center">
+                                    <div class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem" [ngStyle]="{height: '8px'}">
+                                        <div class="bg-cyan-500 h-full" [ngStyle]="{width: '16%'}"></div>
+                                    </div>
+                                    <span class="text-cyan-500 ml-3 font-medium">%16</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </p-toolbar>
+            </p-tabPanel>
+            <p-tabPanel header="{{'Consultations :' | translate}}">
+                <p-table [value]="consultations" >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Ref</th>
+                            <th>Type de Consultation</th>
+                            <th>Medecin</th>
+                            <th>Consultation</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-element2>
+                        <tr>
+                            <td>{{element2.ref}}</td>
+                            <td>{{element2.typeConsultation}}</td>
+                            <td>{{element2.medecin?.nom}}</td>
+                            <td>
+                                <button
+                                    pButton
+                                    pRipple
+                                    icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-info mr-2"
+                                    (click)="showConsultation(element2)"
+                                ></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-tabPanel>
+            <p-tabPanel header="{{'Contacts :' | translate}}">
+                <p-table [value]="contacts"  >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>cin</th>
+                            <th>prenom</th>
+                            <th>nom</th>
+                            <th>email</th>
+                            <th>telephone</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-element>
+                        <tr>
+                            <td>{{element.cin}}</td>
+                            <td>{{element.prenom}}</td>
+                            <td>{{element.nom}}</td>
+                            <td>{{element.email}}</td>
+                            <td>{{element.telephone}}</td>
+
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-tabPanel>
+            <p-tabPanel header="{{'Antecedents :' | translate}}">
+                <p-table [value]="antecedents"  >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>antecedent</th>
+                            <th>description</th>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-element>
+                        <tr>
+                            <td>Reference</td>
+                            <td>{{element.ref}}</td>
+                        </tr>
+                        <tr>
+                            <td>Allergie</td>
+                            <td>{{element.prenom}}</td>
+                        </tr>
+                        <tr>
+                            <td>les aspects psychologiques</td>
+                            <td>{{element.prenom}}</td>
+                        </tr>
+                        <tr>
+                            <td>Respiratoire</td>
+                            <td>{{element.respiratoire}}</td>
+                        </tr>
+                        <tr>
+                            <td>Alimentation</td>
+                            <td>{{element.alimentation}}</td>
+                        </tr>
+                        <tr>
+                            <td>Mouvement</td>
+                            <td>{{element.mouvement}}</td>
+                        </tr>
+                        <tr>
+                            <td>Sommeil</td>
+                            <td>{{element.sommeil}}</td>
+                        </tr>
+
+                    </ng-template>
+                </p-table>
+            </p-tabPanel>
+            <p-tabPanel header="{{'Certificats :' | translate}}">
+                <p-table [value]="certificats"  >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Reference</th>
+                            <th>Date de Debut</th>
+                            <th>Date de Fin</th>
+                            <th>Le nombre be jours</th>
+                            <th>Consultation</th>
+                            <th>Medecin</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-element>
+                        <tr>
+                            <td>{{element.ref}}</td>
+                            <td>{{element.dateDebut | date:'dd MMM yyyy'}}</td>
+                            <td>{{element.dateFin | date:'dd MMM yyyy'}}</td>
+                            <td>{{element.nbrJour}}</td>
+                            <td>{{element.consultatuin.ref}}</td>
+                            <td>{{element.consultatuin.medecin.prenom}} {{element.consultatuin.medecin.nom}}</td>
+
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-tabPanel>
+            <p-tabPanel header="{{'Ordonnance :' | translate}}">
+                <p-table [value]="ordonances"  >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Reference</th>
+                            <th>Hospitalnom</th>
+                            <th>traitement</th>
+                            <th>Consultation</th>
+                            <th>Medecin</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-element>
+                        <tr>
+                            <td>{{element.ref}}</td>
+                            <td>{{element.nomHospital}}</td>
+                            <td>{{element.traitement.ref}}</td>
+                            <td>{{element.consultatuin.ref}}</td>
+                            <td>{{element.consultatuin.medecin.prenom}} {{element.consultatuin.medecin.nom}}</td>
+
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-tabPanel>
+            <p-tabPanel header="{{'Diagnostics :' | translate}}">
+                <p-table [value]="diagnostics"  >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Reference</th>
+                            <th>Date de Diagnostic</th>
+                            <th>Description</th>
+                            <th>Consultation</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-element>
+                        <tr>
+                            <td>{{element.ref}}</td>
+                            <td>{{element.dateDiagnostic | date:'dd MMM yyyy'}}</td>
+                            <td>{{element.description}}</td>
+                            <td>{{element.consultation?.ref}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-tabPanel>
+            <p-tabPanel header="{{'Syntheses :' | translate}}">
+                <p-table [value]="syntheses"  >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Reference</th>
+                            <th>Date de Synthese</th>
+                            <th>Description</th>
+                            <th>Consultation</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-element>
+                        <tr>
+                            <td>{{element.ref}}</td>
+                            <td>{{element.dateSyntheseMedicale}}</td>
+                            <td>{{element.description}}</td>
+                            <td>{{element.consultation?.ref}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-tabPanel>
+        </p-tabView>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-flexbox">
+            <button
+                pButton
+                pRipple
+                label="{{'validate' | translate}}"
+                icon="pi pi-check"
+            ></button>
+            <button
+                pButton
+                pRipple
+                label="{{'cancel' | translate}}"
+                icon="pi pi-times"
+                class="p-button-outlined"
+            ></button>
+        </div>
+    </ng-template>
+</p-dialog>
+
+<p-dialog
+    [(visible)]="showConsultationDetails"
+    [style]="{width: '70vw' , height:'50vw'}"
+    header="Consultation :  {{actualConsultation?.ref}}"
+    [modal]="true"
+    styleClass="p-fluid"
+    [maximizable]="true"
+    [draggable]="false"
+    [resizable]="false"
+>
+    <ng-template pTemplate="content" >
+        <p-tabView>
+            <p-tabPanel header="{{'Fiche de patient :' | translate}}">
+                <p-table [value]="fichePatients"  >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Reference</th>
+                            <th>Date de Fiche Patient</th>
+                            <th>Antecedent Famillial</th>
+                            <th>Histoire Maladie</th>
+                            <th>Examen</th>
+                            <th>Conclusion</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-element>
+                        <tr>
+                            <td>{{element.ref}}</td>
+                            <td>{{element.dateFichePatient | date:'dd MMM yyyy'}}</td>
+                            <td>{{element.antecedentFamillial}}</td>
+                            <td>{{element.histoireMaladie}}</td>
+                            <td>{{element.examenFichePatient}}</td>
+                            <td>{{element.conclusionFichePatient}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                <p-toolbar style="margin-top:10px">
+                    <div class="card" style="width: 100%;">
+                        <p-chart type="line" [data]="data" [options]="options" />
+                    </div>
+                </p-toolbar>
+            </p-tabPanel>
+            <p-tabPanel header="{{'Analyses :' | translate}}">
+
+                <p-table [value]="analyses"  >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Reference</th>
+                            <th>Date d'Analyse </th>
+                            <th>Valeur </th>
+                            <th>ValeurRang</th>
+                            <th>Epreuve</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-element>
+                        <tr>
+                            <td>{{element.ref}}</td>
+                            <td>{{element.dateAnalyseMedicale | date:'dd MMM yyyy'}}</td>
+                            <td>{{element.valeur}}</td>
+                            <td>{{element.valeurRang}}</td>
+                            <td>{{element?.epreuve?.libelle}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-tabPanel>
+            <p-tabPanel header="{{'Radiologie :' | translate}}">
+                <p-table [value]="radiologies"  >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Reference</th>
+                            <th>Date Radiologie </th>
+                            <th>Commentaire </th>
+                            <th>Image de Scanner</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-element>
+                        <tr>
+                            <td>{{element.ref}}</td>
+                            <td>{{element.dateRadiologie | date:'dd MMM yyyy'}}</td>
+                            <td>{{element.commentaire}}</td>
+                            <td><img src="favicon.ico"></td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-tabPanel>
+
+        </p-tabView>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-flexbox">
+            <button
+                pButton
+                pRipple
+                label="{{'validate' | translate}}"
+                icon="pi pi-check"
+            ></button>
+            <button
+                pButton
+                pRipple
+                label="{{'cancel' | translate}}"
+                icon="pi pi-times"
+                class="p-button-outlined"
+            ></button>
+        </div>
+    </ng-template>
+</p-dialog>

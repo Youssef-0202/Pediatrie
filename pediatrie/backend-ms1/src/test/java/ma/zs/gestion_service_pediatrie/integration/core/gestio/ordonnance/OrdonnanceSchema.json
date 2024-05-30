@@ -1,0 +1,17 @@
+{
+    "ref": "#string",
+    "nomHospital": "#string",
+    "adresseHospitla": "#string",
+    "signature": "#string",
+    "traitement": {"id": "#number"},
+    "consultatuin": {"id": "#number"}
+
+}
+
+
+
+
+
+
+
+

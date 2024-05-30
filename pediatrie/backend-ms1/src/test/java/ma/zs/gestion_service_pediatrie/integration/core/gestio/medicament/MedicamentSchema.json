@@ -1,0 +1,16 @@
+{
+    "ref": "#string",
+    "sointProduit": "#string",
+    "duree": "#string",
+    "consigne": "#string",
+    "traitement": {"id": "#number"}
+
+}
+
+
+
+
+
+
+
+

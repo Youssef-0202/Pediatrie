@@ -1,0 +1,1715 @@
+openapi: 3.0.3
+info:
+  title: Title
+  description: Title
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  /patientContacts:
+    get:
+      summary: List all patientContacts
+      operationId: listPatientContacts
+      tags:
+        - patientContacts
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of patientContacts
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/PatientContacts'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a patientContact
+      operationId: createPatientContacts
+      tags:
+        - patientContacts
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /patientContacts/{patientContactId}:
+    get:
+      summary: Info for a specific patientContact
+      operationId: showPatientContactById
+      tags:
+        - patientContacts
+      parameters:
+        - name: patientContactId
+          in: path
+          required: true
+          description: The id of the patientContact to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/PatientContacts'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /antecedents:
+    get:
+      summary: List all antecedents
+      operationId: listAntecedents
+      tags:
+        - antecedents
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of antecedents
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Antecedents'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a antecedent
+      operationId: createAntecedents
+      tags:
+        - antecedents
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /antecedents/{antecedentId}:
+    get:
+      summary: Info for a specific antecedent
+      operationId: showAntecedentById
+      tags:
+        - antecedents
+      parameters:
+        - name: antecedentId
+          in: path
+          required: true
+          description: The id of the antecedent to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Antecedents'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /fichePatients:
+    get:
+      summary: List all fichePatients
+      operationId: listFichePatients
+      tags:
+        - fichePatients
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of fichePatients
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/FichePatients'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a fichePatient
+      operationId: createFichePatients
+      tags:
+        - fichePatients
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /fichePatients/{fichePatientId}:
+    get:
+      summary: Info for a specific fichePatient
+      operationId: showFichePatientById
+      tags:
+        - fichePatients
+      parameters:
+        - name: fichePatientId
+          in: path
+          required: true
+          description: The id of the fichePatient to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/FichePatients'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /relations:
+    get:
+      summary: List all relations
+      operationId: listRelations
+      tags:
+        - relations
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of relations
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Relations'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a relation
+      operationId: createRelations
+      tags:
+        - relations
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /relations/{relationId}:
+    get:
+      summary: Info for a specific relation
+      operationId: showRelationById
+      tags:
+        - relations
+      parameters:
+        - name: relationId
+          in: path
+          required: true
+          description: The id of the relation to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Relations'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /certificats:
+    get:
+      summary: List all certificats
+      operationId: listCertificats
+      tags:
+        - certificats
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of certificats
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Certificats'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a certificat
+      operationId: createCertificats
+      tags:
+        - certificats
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /certificats/{certificatId}:
+    get:
+      summary: Info for a specific certificat
+      operationId: showCertificatById
+      tags:
+        - certificats
+      parameters:
+        - name: certificatId
+          in: path
+          required: true
+          description: The id of the certificat to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Certificats'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /typeImages:
+    get:
+      summary: List all typeImages
+      operationId: listTypeImages
+      tags:
+        - typeImages
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of typeImages
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/TypeImages'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a typeImage
+      operationId: createTypeImages
+      tags:
+        - typeImages
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /typeImages/{typeImageId}:
+    get:
+      summary: Info for a specific typeImage
+      operationId: showTypeImageById
+      tags:
+        - typeImages
+      parameters:
+        - name: typeImageId
+          in: path
+          required: true
+          description: The id of the typeImage to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/TypeImages'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /sexes:
+    get:
+      summary: List all sexes
+      operationId: listSexes
+      tags:
+        - sexes
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of sexes
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Sexes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a sexe
+      operationId: createSexes
+      tags:
+        - sexes
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /sexes/{sexeId}:
+    get:
+      summary: Info for a specific sexe
+      operationId: showSexeById
+      tags:
+        - sexes
+      parameters:
+        - name: sexeId
+          in: path
+          required: true
+          description: The id of the sexe to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Sexes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /patients:
+    get:
+      summary: List all patients
+      operationId: listPatients
+      tags:
+        - patients
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of patients
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Patients'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a patient
+      operationId: createPatients
+      tags:
+        - patients
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /patients/{patientId}:
+    get:
+      summary: Info for a specific patient
+      operationId: showPatientById
+      tags:
+        - patients
+      parameters:
+        - name: patientId
+          in: path
+          required: true
+          description: The id of the patient to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Patients'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /infermiers:
+    get:
+      summary: List all infermiers
+      operationId: listInfermiers
+      tags:
+        - infermiers
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of infermiers
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Infermiers'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a infermier
+      operationId: createInfermiers
+      tags:
+        - infermiers
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /infermiers/{infermierId}:
+    get:
+      summary: Info for a specific infermier
+      operationId: showInfermierById
+      tags:
+        - infermiers
+      parameters:
+        - name: infermierId
+          in: path
+          required: true
+          description: The id of the infermier to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Infermiers'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /epreuves:
+    get:
+      summary: List all epreuves
+      operationId: listEpreuves
+      tags:
+        - epreuves
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of epreuves
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Epreuves'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a epreuve
+      operationId: createEpreuves
+      tags:
+        - epreuves
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /epreuves/{epreuveId}:
+    get:
+      summary: Info for a specific epreuve
+      operationId: showEpreuveById
+      tags:
+        - epreuves
+      parameters:
+        - name: epreuveId
+          in: path
+          required: true
+          description: The id of the epreuve to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Epreuves'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /consultations:
+    get:
+      summary: List all consultations
+      operationId: listConsultations
+      tags:
+        - consultations
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of consultations
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Consultations'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a consultation
+      operationId: createConsultations
+      tags:
+        - consultations
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /consultations/{consultationId}:
+    get:
+      summary: Info for a specific consultation
+      operationId: showConsultationById
+      tags:
+        - consultations
+      parameters:
+        - name: consultationId
+          in: path
+          required: true
+          description: The id of the consultation to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Consultations'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /diagnostics:
+    get:
+      summary: List all diagnostics
+      operationId: listDiagnostics
+      tags:
+        - diagnostics
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of diagnostics
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Diagnostics'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a diagnostic
+      operationId: createDiagnostics
+      tags:
+        - diagnostics
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /diagnostics/{diagnosticId}:
+    get:
+      summary: Info for a specific diagnostic
+      operationId: showDiagnosticById
+      tags:
+        - diagnostics
+      parameters:
+        - name: diagnosticId
+          in: path
+          required: true
+          description: The id of the diagnostic to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Diagnostics'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /traitements:
+    get:
+      summary: List all traitements
+      operationId: listTraitements
+      tags:
+        - traitements
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of traitements
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Traitements'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a traitement
+      operationId: createTraitements
+      tags:
+        - traitements
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /traitements/{traitementId}:
+    get:
+      summary: Info for a specific traitement
+      operationId: showTraitementById
+      tags:
+        - traitements
+      parameters:
+        - name: traitementId
+          in: path
+          required: true
+          description: The id of the traitement to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Traitements'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /analyseMedicales:
+    get:
+      summary: List all analyseMedicales
+      operationId: listAnalyseMedicales
+      tags:
+        - analyseMedicales
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of analyseMedicales
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/AnalyseMedicales'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a analyseMedicale
+      operationId: createAnalyseMedicales
+      tags:
+        - analyseMedicales
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /analyseMedicales/{analyseMedicaleId}:
+    get:
+      summary: Info for a specific analyseMedicale
+      operationId: showAnalyseMedicaleById
+      tags:
+        - analyseMedicales
+      parameters:
+        - name: analyseMedicaleId
+          in: path
+          required: true
+          description: The id of the analyseMedicale to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/AnalyseMedicales'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /radiologies:
+    get:
+      summary: List all radiologies
+      operationId: listRadiologies
+      tags:
+        - radiologies
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of radiologies
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Radiologies'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a radiologie
+      operationId: createRadiologies
+      tags:
+        - radiologies
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /radiologies/{radiologieId}:
+    get:
+      summary: Info for a specific radiologie
+      operationId: showRadiologieById
+      tags:
+        - radiologies
+      parameters:
+        - name: radiologieId
+          in: path
+          required: true
+          description: The id of the radiologie to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Radiologies'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /medicaments:
+    get:
+      summary: List all medicaments
+      operationId: listMedicaments
+      tags:
+        - medicaments
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of medicaments
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Medicaments'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a medicament
+      operationId: createMedicaments
+      tags:
+        - medicaments
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /medicaments/{medicamentId}:
+    get:
+      summary: Info for a specific medicament
+      operationId: showMedicamentById
+      tags:
+        - medicaments
+      parameters:
+        - name: medicamentId
+          in: path
+          required: true
+          description: The id of the medicament to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Medicaments'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /ordonnances:
+    get:
+      summary: List all ordonnances
+      operationId: listOrdonnances
+      tags:
+        - ordonnances
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of ordonnances
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Ordonnances'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a ordonnance
+      operationId: createOrdonnances
+      tags:
+        - ordonnances
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /ordonnances/{ordonnanceId}:
+    get:
+      summary: Info for a specific ordonnance
+      operationId: showOrdonnanceById
+      tags:
+        - ordonnances
+      parameters:
+        - name: ordonnanceId
+          in: path
+          required: true
+          description: The id of the ordonnance to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Ordonnances'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /medecins:
+    get:
+      summary: List all medecins
+      operationId: listMedecins
+      tags:
+        - medecins
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of medecins
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Medecins'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a medecin
+      operationId: createMedecins
+      tags:
+        - medecins
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /medecins/{medecinId}:
+    get:
+      summary: Info for a specific medecin
+      operationId: showMedecinById
+      tags:
+        - medecins
+      parameters:
+        - name: medecinId
+          in: path
+          required: true
+          description: The id of the medecin to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Medecins'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /groupeSanguins:
+    get:
+      summary: List all groupeSanguins
+      operationId: listGroupeSanguins
+      tags:
+        - groupeSanguins
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of groupeSanguins
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/GroupeSanguins'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a groupeSanguin
+      operationId: createGroupeSanguins
+      tags:
+        - groupeSanguins
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /groupeSanguins/{groupeSanguinId}:
+    get:
+      summary: Info for a specific groupeSanguin
+      operationId: showGroupeSanguinById
+      tags:
+        - groupeSanguins
+      parameters:
+        - name: groupeSanguinId
+          in: path
+          required: true
+          description: The id of the groupeSanguin to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/GroupeSanguins'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /syntheseMedicales:
+    get:
+      summary: List all syntheseMedicales
+      operationId: listSyntheseMedicales
+      tags:
+        - syntheseMedicales
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of syntheseMedicales
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/SyntheseMedicales'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a syntheseMedicale
+      operationId: createSyntheseMedicales
+      tags:
+        - syntheseMedicales
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /syntheseMedicales/{syntheseMedicaleId}:
+    get:
+      summary: Info for a specific syntheseMedicale
+      operationId: showSyntheseMedicaleById
+      tags:
+        - syntheseMedicales
+      parameters:
+        - name: syntheseMedicaleId
+          in: path
+          required: true
+          description: The id of the syntheseMedicale to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/SyntheseMedicales'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  
+
+
+definitions:
+  PatientContact:
+    type: "object"
+    required:
+      - id
+      - cin
+      - email
+      - nom
+      - prenom
+      - telephone
+      - adresse
+    properties:
+      id:
+        type: int
+      cin:
+        type: string
+      email:
+        type: string
+      nom:
+        type: string
+      prenom:
+        type: string
+      telephone:
+        type: string
+      adresse:
+        type: string
+  PatientContacts:
+    type: array
+    items:
+      $ref: '#/definitions/PatientContact'
+  Antecedent:
+    type: "object"
+    required:
+      - id
+      - ref
+      - allergie
+      - etat_psy
+      - respiratoire
+      - alimentation
+      - mouvement
+      - sommeil
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      allergie:
+        type: string
+      etat_psy:
+        type: string
+      respiratoire:
+        type: string
+      alimentation:
+        type: string
+      mouvement:
+        type: string
+      sommeil:
+        type: string
+  Antecedents:
+    type: array
+    items:
+      $ref: '#/definitions/Antecedent'
+  FichePatient:
+    type: "object"
+    required:
+      - id
+      - ref
+      - dateFichePatient
+      - antecedentFamillial
+      - histoireMaladie
+      - examenFichePatient
+      - conclusionFichePatient
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      dateFichePatient:
+        type: date
+      antecedentFamillial:
+        type: string
+      histoireMaladie:
+        type: string
+      examenFichePatient:
+        type: string
+      conclusionFichePatient:
+        type: string
+  FichePatients:
+    type: array
+    items:
+      $ref: '#/definitions/FichePatient'
+  Relation:
+    type: "object"
+    required:
+      - id
+      - ref
+      - libelle
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      libelle:
+        type: string
+  Relations:
+    type: array
+    items:
+      $ref: '#/definitions/Relation'
+  Certificat:
+    type: "object"
+    required:
+      - id
+      - ref
+      - dateDebut
+      - dateFin
+      - description
+      - nbrJour
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      dateDebut:
+        type: date
+      dateFin:
+        type: date
+      description:
+        type: string
+      nbrJour:
+        type: int
+  Certificats:
+    type: array
+    items:
+      $ref: '#/definitions/Certificat'
+  TypeImage:
+    type: "object"
+    required:
+      - id
+      - ref
+      - libelle
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      libelle:
+        type: string
+  TypeImages:
+    type: array
+    items:
+      $ref: '#/definitions/TypeImage'
+  Sexe:
+    type: "object"
+    required:
+      - id
+      - ref
+      - libelle
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      libelle:
+        type: string
+  Sexes:
+    type: array
+    items:
+      $ref: '#/definitions/Sexe'
+  Patient:
+    type: "object"
+    required:
+      - id
+      - numDossier
+      - nom
+      - prenom
+      - dateNaissance
+      - photoProfil
+    properties:
+      id:
+        type: int
+      numDossier:
+        type: string
+      nom:
+        type: string
+      prenom:
+        type: string
+      dateNaissance:
+        type: date
+      photoProfil:
+        type: string
+  Patients:
+    type: array
+    items:
+      $ref: '#/definitions/Patient'
+  Infermier:
+    type: "object"
+    required:
+      - id
+      - ref
+      - email
+      - nom
+      - prenom
+      - dateNaissance
+      - telephone
+      - photoProfil
+      - credentialsNonExpired
+      - enabled
+      - accountNonExpired
+      - accountNonLocked
+      - passwordChanged
+      - username
+      - password
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      email:
+        type: string
+      nom:
+        type: string
+      prenom:
+        type: string
+      dateNaissance:
+        type: date
+      telephone:
+        type: string
+      photoProfil:
+        type: string
+      credentialsNonExpired:
+        type: boolean
+      enabled:
+        type: boolean
+      accountNonExpired:
+        type: boolean
+      accountNonLocked:
+        type: boolean
+      passwordChanged:
+        type: boolean
+      username:
+        type: string
+      password:
+        type: string
+  Infermiers:
+    type: array
+    items:
+      $ref: '#/definitions/Infermier'
+  Epreuve:
+    type: "object"
+    required:
+      - id
+      - ref
+      - libelle
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      libelle:
+        type: string
+  Epreuves:
+    type: array
+    items:
+      $ref: '#/definitions/Epreuve'
+  Consultation:
+    type: "object"
+    required:
+      - id
+      - ref
+      - dateConsultation
+      - heureConsultation
+      - typeConsultation
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      dateConsultation:
+        type: date
+      heureConsultation:
+        type: date
+      typeConsultation:
+        type: string
+  Consultations:
+    type: array
+    items:
+      $ref: '#/definitions/Consultation'
+  Diagnostic:
+    type: "object"
+    required:
+      - id
+      - ref
+      - dateDiagnostic
+      - description
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      dateDiagnostic:
+        type: date
+      description:
+        type: string
+  Diagnostics:
+    type: array
+    items:
+      $ref: '#/definitions/Diagnostic'
+  Traitement:
+    type: "object"
+    required:
+      - id
+      - ref
+      - imageOrdonnance
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      imageOrdonnance:
+        type: string
+  Traitements:
+    type: array
+    items:
+      $ref: '#/definitions/Traitement'
+  AnalyseMedicale:
+    type: "object"
+    required:
+      - id
+      - ref
+      - dateAnalyseMedicale
+      - valeur
+      - valeurRang
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      dateAnalyseMedicale:
+        type: date
+      valeur:
+        type: number
+      valeurRang:
+        type: string
+  AnalyseMedicales:
+    type: array
+    items:
+      $ref: '#/definitions/AnalyseMedicale'
+  Radiologie:
+    type: "object"
+    required:
+      - id
+      - ref
+      - dateRadiologie
+      - commentaire
+      - imageScann
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      dateRadiologie:
+        type: date
+      commentaire:
+        type: string
+      imageScann:
+        type: string
+  Radiologies:
+    type: array
+    items:
+      $ref: '#/definitions/Radiologie'
+  Medicament:
+    type: "object"
+    required:
+      - id
+      - ref
+      - sointProduit
+      - duree
+      - consigne
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      sointProduit:
+        type: string
+      duree:
+        type: string
+      consigne:
+        type: string
+  Medicaments:
+    type: array
+    items:
+      $ref: '#/definitions/Medicament'
+  Ordonnance:
+    type: "object"
+    required:
+      - id
+      - ref
+      - nomHospital
+      - dateOrdonnance
+      - adresseHospitla
+      - signature
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      nomHospital:
+        type: string
+      dateOrdonnance:
+        type: date
+      adresseHospitla:
+        type: string
+      signature:
+        type: string
+  Ordonnances:
+    type: array
+    items:
+      $ref: '#/definitions/Ordonnance'
+  Medecin:
+    type: "object"
+    required:
+      - id
+      - ref
+      - email
+      - nom
+      - prenom
+      - dateNaissance
+      - telephone
+      - photoProfil
+      - speciality
+      - credentialsNonExpired
+      - enabled
+      - accountNonExpired
+      - accountNonLocked
+      - passwordChanged
+      - username
+      - password
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      email:
+        type: string
+      nom:
+        type: string
+      prenom:
+        type: string
+      dateNaissance:
+        type: date
+      telephone:
+        type: string
+      photoProfil:
+        type: string
+      speciality:
+        type: string
+      credentialsNonExpired:
+        type: boolean
+      enabled:
+        type: boolean
+      accountNonExpired:
+        type: boolean
+      accountNonLocked:
+        type: boolean
+      passwordChanged:
+        type: boolean
+      username:
+        type: string
+      password:
+        type: string
+  Medecins:
+    type: array
+    items:
+      $ref: '#/definitions/Medecin'
+  GroupeSanguin:
+    type: "object"
+    required:
+      - id
+      - ref
+      - libelle
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      libelle:
+        type: string
+  GroupeSanguins:
+    type: array
+    items:
+      $ref: '#/definitions/GroupeSanguin'
+  SyntheseMedicale:
+    type: "object"
+    required:
+      - id
+      - ref
+      - dateSyntheseMedicale
+      - description
+    properties:
+      id:
+        type: int
+      ref:
+        type: string
+      dateSyntheseMedicale:
+        type: date
+      description:
+        type: string
+  SyntheseMedicales:
+    type: array
+    items:
+      $ref: '#/definitions/SyntheseMedicale'
+
+  Error:
+    type: "object"
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string

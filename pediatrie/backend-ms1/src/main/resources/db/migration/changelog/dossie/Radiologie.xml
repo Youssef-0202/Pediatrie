@@ -1,0 +1,67 @@
+<!-- db/changelog-1.1-container.xml -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <!-- Create Container Table -->
+    <changeSet id="1" author="your-name">
+    <createTable tableName="radiologie">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+        <column name="ref" type="VARCHAR(500)"/>
+        <column name="date_radiologie" type="TIMESTAMP"/>
+        <column name="commentaire" type="VARCHAR(500)"/>
+        <column name="image_scann" type="VARCHAR(500)"/>
+
+        <column name="consultatuin_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="type_image_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+  </changeSet>
+
+    <!-- Add foreign key constraint -->
+  <changeSet id="2" author="your-name">
+      <addForeignKeyConstraint
+              baseTableName="radiologie"
+              baseColumnNames="consultatuin_id"
+              referencedTableName="consultatuin"
+              referencedColumnNames="id"
+              constraintName="fk_radiologie_consultatuin"/>
+      <addForeignKeyConstraint
+              baseTableName="radiologie"
+              baseColumnNames="type_image_id"
+              referencedTableName="type_image"
+              referencedColumnNames="id"
+              constraintName="fk_radiologie_type_image"/>
+
+  </changeSet>
+
+    <!-- Create Sequence for ContainerType -->
+  <changeSet id="3" author="your-name">
+    <createSequence sequenceName="radiologie_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <!-- Load Data from CSV -->
+  <changeSet id="4" author="your-name">
+    <loadData
+            file="classpath:/db/migration/data/dossie/Radiologie.csv"
+            tableName="radiologie">
+      <column name="id" type="NUMERIC"/>
+          <column name="ref" type="STRING"/>
+          <column name="date_radiologie" type="TIMESTAMP"/>
+          <column name="commentaire" type="STRING"/>
+          <column name="image_scann" type="STRING"/>
+        <column name="consultatuin" type="BIGINT"/>
+        <column name="type_image" type="BIGINT"/>
+    </loadData>
+  </changeSet>
+
+
+</databaseChangeLog>

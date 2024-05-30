@@ -1,0 +1,16 @@
+{
+    "ref": "#string",
+    "commentaire": "#string",
+    "imageScann": "#string",
+    "consultatuin": {"id": "#number"},
+    "typeImage": {"id": "#number"}
+
+}
+
+
+
+
+
+
+
+

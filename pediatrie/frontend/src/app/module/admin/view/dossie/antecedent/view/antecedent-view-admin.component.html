@@ -1,0 +1,56 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'antecedent.tabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'antecedent.tabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'antecedent.ref' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'antecedent.ref' | translate}}" autofocus  id="1" [ngModel]="item.ref">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'antecedent.allergie' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'antecedent.allergie' | translate}}" autofocus  id="2" [ngModel]="item.allergie">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'antecedent.etat_psy' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'antecedent.etat_psy' | translate}}" autofocus  id="3" [ngModel]="item.etat_psy">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'antecedent.respiratoire' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'antecedent.respiratoire' | translate}}" autofocus  id="4" [ngModel]="item.respiratoire">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="5">{{'antecedent.alimentation' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'antecedent.alimentation' | translate}}" autofocus  id="5" [ngModel]="item.alimentation">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="6">{{'antecedent.mouvement' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'antecedent.mouvement' | translate}}" autofocus  id="6" [ngModel]="item.mouvement">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'antecedent.sommeil' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'antecedent.sommeil' | translate}}" autofocus  id="7" [ngModel]="item.sommeil">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="8">{{'antecedent.groupeSanguin' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'antecedent.groupeSanguin' | translate}}" autofocus  id="8" [ngModel]="item.groupeSanguin?.ref">
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-flexbox">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

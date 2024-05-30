@@ -1,0 +1,63 @@
+<!-- db/changelog-1.1-container.xml -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <!-- Create Container Table -->
+    <changeSet id="1" author="your-name">
+    <createTable tableName="traitement">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+        <column name="ref" type="VARCHAR(500)"/>
+        <column name="image_ordonnance" type="VARCHAR(500)"/>
+
+        <column name="ordonnance_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="consultatuin_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+  </changeSet>
+
+    <!-- Add foreign key constraint -->
+  <changeSet id="2" author="your-name">
+      <addForeignKeyConstraint
+              baseTableName="traitement"
+              baseColumnNames="ordonnance_id"
+              referencedTableName="ordonnance"
+              referencedColumnNames="id"
+              constraintName="fk_traitement_ordonnance"/>
+      <addForeignKeyConstraint
+              baseTableName="traitement"
+              baseColumnNames="consultatuin_id"
+              referencedTableName="consultatuin"
+              referencedColumnNames="id"
+              constraintName="fk_traitement_consultatuin"/>
+
+  </changeSet>
+
+    <!-- Create Sequence for ContainerType -->
+  <changeSet id="3" author="your-name">
+    <createSequence sequenceName="traitement_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <!-- Load Data from CSV -->
+  <changeSet id="4" author="your-name">
+    <loadData
+            file="classpath:/db/migration/data/gestio/Traitement.csv"
+            tableName="traitement">
+      <column name="id" type="NUMERIC"/>
+          <column name="ref" type="STRING"/>
+          <column name="image_ordonnance" type="STRING"/>
+        <column name="ordonnance" type="BIGINT"/>
+        <column name="consultatuin" type="BIGINT"/>
+    </loadData>
+  </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,45 @@
+{
+    "numDossier": "numDossier-1",
+    "nom": "nom-1",
+    "prenom": "prenom-1",
+    "photoProfil": "photoProfil-1",
+    "sexe": {"id": "1"},
+
+    "patientContact": [
+        {
+            "cin":"cin-1",
+            "email":"email-1",
+            "nom":"nom-1",
+            "prenom":"prenom-1",
+            "telephone":"telephone-1",
+            "adresse":"adresse-1",
+            "relation":{"id": "1"}
+        },
+        {
+            "cin":"cin-2",
+            "email":"email-2",
+            "nom":"nom-2",
+            "prenom":"prenom-2",
+            "telephone":"telephone-2",
+            "adresse":"adresse-2",
+            "relation":{"id": "2"}
+        },
+        {
+            "cin":"cin-3",
+            "email":"email-3",
+            "nom":"nom-3",
+            "prenom":"prenom-3",
+            "telephone":"telephone-3",
+            "adresse":"adresse-3",
+            "relation":{"id": "3"}
+        }
+    ]
+}
+
+
+
+
+
+
+
+

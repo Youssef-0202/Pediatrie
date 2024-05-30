@@ -1,0 +1,52 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'ordonnance.tabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'ordonnance.tabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'ordonnance.ref' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'ordonnance.ref' | translate}}" autofocus  id="1" [ngModel]="item.ref">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'ordonnance.nomHospital' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'ordonnance.nomHospital' | translate}}" autofocus  id="2" [ngModel]="item.nomHospital">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'ordonnance.dateOrdonnance' | translate}}</label>
+                        <p-calendar id="3" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'ordonnance.dateOrdonnance' | translate}}"  [ngModel]="item.dateOrdonnance" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'ordonnance.adresseHospitla' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'ordonnance.adresseHospitla' | translate}}" autofocus  id="4" [ngModel]="item.adresseHospitla">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="5">{{'ordonnance.signature' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'ordonnance.signature' | translate}}" autofocus  id="5" [ngModel]="item.signature">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="6">{{'ordonnance.traitement' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'ordonnance.traitement' | translate}}" autofocus  id="6" [ngModel]="item.traitement?.ref">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'ordonnance.consultatuin' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'ordonnance.consultatuin' | translate}}" autofocus  id="7" [ngModel]="item.consultatuin?.ref">
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-flexbox">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

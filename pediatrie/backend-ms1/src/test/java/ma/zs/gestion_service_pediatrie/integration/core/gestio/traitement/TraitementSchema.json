@@ -1,0 +1,35 @@
+{
+    "ref": "#string",
+    "imageOrdonnance": "#string",
+    "ordonnance": {"id": "#number"},
+    "consultatuin": {"id": "#number"},
+
+    "medicaments": [
+      {
+        "ref":"#string",}
+        "sointProduit":"#string",}
+        "duree":"#string",}
+        "consigne":"#string"}
+      },
+      {
+        "ref":"#string",}
+        "sointProduit":"#string",}
+        "duree":"#string",}
+        "consigne":"#string"}
+      },
+      {
+        "ref":"#string",}
+        "sointProduit":"#string",}
+        "duree":"#string",}
+        "consigne":"#string"}
+      }
+    ]
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,123 @@
+    <p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="{{'traitement.tabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+        <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="{{'traitement.tabPan' | translate}}">
+                        <div class="grid">
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="1">{{'traitement.ref' | translate}}<span style="color: red;">*</span></label>
+                                            <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'traitement.ref' | translate}}" id="1" [(ngModel)]="item.ref"
+                                                   [ngClass]="{'ng-invalid ng-dirty' : !validTraitementRef}"  />
+                                            <small class='p-error' *ngIf='!validTraitementRef'>Ref est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="2">{{'traitement.imageOrdonnance' | translate}}</label>
+                                            <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'traitement.imageOrdonnance' | translate}}" id="2" [(ngModel)]="item.imageOrdonnance"
+                                                    />
+                                            
+                                        </div>
+
+
+
+                                    <div class="field col-11 md:col-6">
+                                        <label for="3">{{'traitement.ordonnance' | translate}}</label>
+                                        <p-dropdown  appendTo="body"  [options]="ordonnances" [(ngModel)]="item.ordonnance" id="3" [filter]="true" filterMatchMode="contains"
+                                                     [showClear]="true" optionLabel="ref" placeholder="{{'traitement.ordonnance' | translate}}"  >
+                                        </p-dropdown>
+                                        
+                                    </div>
+
+                                    <div class="field col-11 md:col-6">
+                                        <label for="4">{{'traitement.consultatuin' | translate}}</label>
+                                        <p-dropdown  appendTo="body"  [options]="consultatuins" [(ngModel)]="item.consultatuin" id="4" [filter]="true" filterMatchMode="contains"
+                                                     [showClear]="true" optionLabel="ref" placeholder="{{'traitement.consultatuin' | translate}}"  >
+                                        </p-dropdown>
+                                        
+                                    </div>
+
+                        </div>
+                    </p-tabPanel>
+                            <p-tabPanel header="{{'traitement.medicaments' | translate}}">
+                                        <div class="p-col">
+                                            <div class="grid">
+                                                            <div class="field col-12 md:col-6">
+                                                                <label for="1">Ref<span style="color: red;">*</span></label>
+                                                                <input class="mb-2 mr-2" type="text" pInputText placeholder="Ref"
+                                                                       id="1" [(ngModel)]="medicamentsElement.ref" autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validMedicamentsRef}"  >
+                                                                <small class='p-error' *ngIf='!validMedicamentsRef'>Ref est obligatoire.</small>
+                                                            </div>
+                                                            <div class="field col-12 md:col-6">
+                                                                <label for="2">Soint produit</label>
+                                                                <input class="mb-2 mr-2" type="text" pInputText placeholder="Soint produit"
+                                                                       id="2" [(ngModel)]="medicamentsElement.sointProduit" autofocus   >
+                                                                
+                                                            </div>
+                                                            <div class="field col-12 md:col-6">
+                                                                <label for="3">Duree</label>
+                                                                <input class="mb-2 mr-2" type="text" pInputText placeholder="Duree"
+                                                                       id="3" [(ngModel)]="medicamentsElement.duree" autofocus   >
+                                                                
+                                                            </div>
+                                                            <div class="field col-12 md:col-6">
+                                                                <label for="4">Consigne</label>
+                                                                <input class="mb-2 mr-2" type="text" pInputText placeholder="Consigne"
+                                                                       id="4" [(ngModel)]="medicamentsElement.consigne" autofocus   >
+                                                                
+                                                            </div>
+                                                <div class="field col-12 md:col-1">
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addMedicaments()"></button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="p-col">
+                                            <div class="card">
+                                                <p-table [value]="item.medicaments" [scrollable]="true" scrollHeight="200px">
+                                                    <ng-template pTemplate="header">
+                                                        <tr>
+                                                                        <th>Ref</th>
+                                                                        <th>Soint produit</th>
+                                                                        <th>Duree</th>
+                                                                        <th>Consigne</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="body" let-p>
+                                                        <tr>
+                                                                        <td>{{p.ref}}</td>
+                                                                        <td>{{p.sointProduit}}</td>
+                                                                        <td>{{p.duree}}</td>
+                                                                        <td>{{p.consigne}}</td>
+                                                            <td>
+                                                                <button (click)="deleteMedicaments(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
+                                                                <button (click)="editMedicaments(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                                                            </td>
+                                                        </tr>
+                                                    </ng-template>
+                                                </p-table>
+                                            </div>
+
+                                        </div>
+                            </p-tabPanel>
+
+
+                </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer" >
+            <div class="p-flexbox">
+
+                    <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check"  (click)="edit()"></button>
+
+
+                        <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideEditDialog()"></button>
+
+
+            </div>
+        </ng-template>
+
+    </p-dialog>

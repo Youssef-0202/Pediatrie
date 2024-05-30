@@ -1,0 +1,188 @@
+<p-dialog [(visible)]="viewDialog2"  [style]="{width: '70vw'}" header="{{'consultation.tabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'consultation.tabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'consultation.ref' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'consultation.ref' | translate}}" autofocus  id="1" [ngModel]="consultationPatient.ref">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'consultation.dateConsultation' | translate}}</label>
+                        <p-calendar id="2" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'consultation.dateConsultation' | translate}}"  [ngModel]="consultationPatient.dateConsultation" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'consultation.heureConsultation' | translate}}</label>
+                        <p-calendar id="3" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'consultation.heureConsultation' | translate}}"  [ngModel]="consultationPatient.heureConsultation" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'consultation.typeConsultation' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'consultation.typeConsultation' | translate}}" autofocus  id="4" [ngModel]="consultationPatient.typeConsultation">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="5">{{'consultation.medecin' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'consultation.medecin' | translate}}" autofocus  id="5" [ngModel]="consultationPatient.medecin?.email">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="6">{{'consultation.infermier' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'consultation.infermier' | translate}}" autofocus  id="6" [ngModel]="consultationPatient.infermier?.email">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'consultation.patient' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'consultation.patient' | translate}}" autofocus  id="7" [ngModel]="consultationPatient.patient?.numDossier">
+                    </div>
+                </div>
+            </p-tabPanel>
+
+            <p-tabPanel header="{{'consultation.analyseMedicale' | translate}}">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="consultationPatient.analyseMedicale" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Ref</th>
+                                        <th>Date analyse medicale</th>
+                                        <th>Valeur</th>
+                                        <th>Valeur rang</th>
+                                        <th>Epreuve</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.ref}}</td>
+                                        <td>{{p.dateAnalyseMedicale | date: dateFormatColumn}}</td>
+                                        <td>{{p.valeur}}</td>
+                                        <td>{{p.valeurRang}}</td>
+                                        <td>{{p.epreuve?.ref}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="{{'consultation.fichePatient' | translate}}">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="consultationPatient.fichePatient" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Ref</th>
+                                        <th>Date fiche patient</th>
+                                        <th>Antecedent famillial</th>
+                                        <th>Histoire maladie</th>
+                                        <th>Examen fiche patient</th>
+                                        <th>Conclusion fiche patient</th>
+                                        <th>Antecedent</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.ref}}</td>
+                                        <td>{{p.dateFichePatient | date: dateFormatColumn}}</td>
+                                        <td>{{p.antecedentFamillial}}</td>
+                                        <td>{{p.histoireMaladie}}</td>
+                                        <td>{{p.examenFichePatient}}</td>
+                                        <td>{{p.conclusionFichePatient}}</td>
+                                        <td>{{p.antecedent?.ref}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="{{'consultation.radiologie' | translate}}">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="consultationPatient?.radiologie" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Ref</th>
+                                        <th>Date radiologie</th>
+                                        <th>Commentaire</th>
+                                        <th>Image scann</th>
+                                        <th>Type image</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.ref}}</td>
+                                        <td>{{p.dateRadiologie | date: dateFormatColumn}}</td>
+                                        <td>{{p.commentaire}}</td>
+                                        <td>{{p.imageScann}}</td>
+                                        <td>{{p.typeImage?.ref}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="{{'consultation.diagnostic' | translate}}">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="consultationPatient.diagnostic" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Ref</th>
+                                        <th>Date diagnostic</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.ref}}</td>
+                                        <td>{{p.dateDiagnostic | date: dateFormatColumn}}</td>
+                                        <td>{{p.description}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="{{'consultation.syntheseMedicale' | translate}}">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="consultationPatient.syntheseMedicale" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Ref</th>
+                                        <th>Date synthese medicale</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.ref}}</td>
+                                        <td>{{p.dateSyntheseMedicale | date: dateFormatColumn}}</td>
+                                        <td>{{p.description}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-flexbox">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+
+

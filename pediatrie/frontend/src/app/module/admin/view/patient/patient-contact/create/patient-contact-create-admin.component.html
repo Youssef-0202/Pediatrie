@@ -1,0 +1,96 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'patientContact.tabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'patientContact.tabPan' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="1">{{'patientContact.cin' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientContact.cin' | translate}}" id="1" [(ngModel)]="item.cin"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validPatientContactCin}"  />
+                                                    <small class='p-error' *ngIf='!validPatientContactCin'>Cin est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="2">{{'patientContact.email' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientContact.email' | translate}}" id="2" [(ngModel)]="item.email"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validPatientContactEmail}"  />
+                                                    <small class='p-error' *ngIf='!validPatientContactEmail'>Email est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="3">{{'patientContact.nom' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientContact.nom' | translate}}" id="3" [(ngModel)]="item.nom"
+                                                             />
+
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="4">{{'patientContact.prenom' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientContact.prenom' | translate}}" id="4" [(ngModel)]="item.prenom"
+                                                             />
+
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="5">{{'patientContact.telephone' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientContact.telephone' | translate}}" id="5" [(ngModel)]="item.telephone"
+                                                             />
+
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="6">{{'patientContact.adresse' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientContact.adresse' | translate}}" id="6" [(ngModel)]="item.adresse"
+                                                             />
+
+                                                </div>
+
+
+
+                                            <div class="field col-11 md:col-6">
+                                                <label for="7">{{'patientContact.relation' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="relations" [(ngModel)]="item.relation" id="7" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'patientContact.relation' | translate}}"  >
+                                                </p-dropdown>
+
+                                            </div>
+
+                                            <div class="field col-11 md:col-6">
+                                                <label for="8">{{'patientContact.patient' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="patients" [(ngModel)]="item.patient" id="8" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="numDossier" placeholder="{{'patientContact.patient' | translate}}"  >
+                                                </p-dropdown>
+
+                                            </div>
+
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-flexbox">
+
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check"  (click)="save()"></button>
+
+
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+
+
+                </div>
+            </ng-template>
+
+    </p-dialog>

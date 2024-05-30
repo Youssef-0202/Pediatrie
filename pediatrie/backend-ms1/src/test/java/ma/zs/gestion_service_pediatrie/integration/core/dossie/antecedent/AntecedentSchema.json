@@ -1,0 +1,19 @@
+{
+    "ref": "#string",
+    "allergie": "#string",
+    "etat_psy": "#string",
+    "respiratoire": "#string",
+    "alimentation": "#string",
+    "mouvement": "#string",
+    "sommeil": "#string",
+    "groupeSanguin": {"id": "#number"}
+
+}
+
+
+
+
+
+
+
+

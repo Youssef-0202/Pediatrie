@@ -1,0 +1,152 @@
+<div class="grid ml-6 mt-2 rounded-4 " style="background-color: rgba(255, 255, 255, 0.5);width:1130px" >
+    <div class="col-6 lg:col-6 xl:col-3" style="font-size:18px">
+        <div class="card mb-0 rounded-4">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Medecin</span>
+                    <div class="text-900 font-medium text-xl">{{ medecins?.length  }}</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-user-plus text-blue-500 text-xl"></i>
+
+                </div>
+            </div>
+            <span class="text-green-500 font-medium">{{medecinsMonth }} nouveau </span>
+            <span class="text-500">ce mois !</span>
+        </div>
+    </div>
+    <div class="col-6 lg:col-6 xl:col-3" style="font-size:18px">
+        <div class="card mb-0 rounded-4">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Infirmiers</span>
+                    <div class="text-900 font-medium text-xl">{{ infermiers?.length }}</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-fw pi-user-plus"></i>
+                </div>
+            </div>
+            <span class="text-green-500 font-medium">{{infermiersMonth}} nouveau </span>
+            <span class="text-500">ce mois !</span>
+        </div>
+    </div>
+    <div class="col-6 lg:col-6 xl:col-3" style="font-size:18px">
+        <div class="card mb-0 rounded-4">
+            <div class="flex justify-content-between mb-3" >
+                <div>
+                    <span class="block text-500 font-medium mb-3">Patients</span>
+                    <div class="text-900 font-medium text-xl">{{ pationts?.length  }}</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-users text-cyan-500 text-xl"></i>
+                </div>
+            </div>
+            <span class="text-green-500 font-medium">{{ patientMonth }} </span>
+            <span class="text-500">visiter ce mois</span>
+        </div>
+    </div>
+    <div class="col-6    lg:col-6 xl:col-3" style="font-size:18px">
+        <div class="card mb-0 rounded-4">
+            <div class="flex justify-content-between mb-3" >
+                <div>
+                    <span class="block text-500 font-medium mb-3">Consultations</span>
+                    <div class="text-900 font-medium text-xl">{{ consultations?.length }}</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-purple-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-folder-open text-purple-500 text-xl"></i>
+                </div>
+            </div>
+            <span class="text-green-500 font-medium">{{consultationDay}}</span>
+            <span class="text-500">Aujoud'hui</span>
+        </div>
+    </div>
+
+    <div class="col-12 xl:col-6">
+        <div class="card rounded-4">
+            <h5 class="text-500 mb-3" style="font-size:20px">Les dernieres insertions :</h5>
+            <p-table [value]="lastes"  responsiveLayout="scroll" >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Image</th>
+                        <th pSortableColumn="name">Nom </th>
+                        <th pSortableColumn="price">Prenom </th>
+                        <th pSortableColumn="price">Role </th>
+                    </tr>
+                </ng-template>
+                    <ng-template pTemplate="body">
+
+                        <tr>
+                            <td style="width: 15%; min-width: 5rem;">
+                                <img src="" class="shadow-4" alt="" width="50">
+                            </td>
+                            <td style="width: 35%; min-width: 7rem;">{{lastMedecins[0]?.nom}}</td>
+                            <td style="width: 35%; min-width: 8rem;">{{lastMedecins[0]?.prenom}}</td>
+                            <td style="width: 15%;">Medecin</td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="width: 15%; min-width: 5rem;">
+                                <img src="" class="shadow-4" alt="" width="50">
+                            </td>
+                            <td style="width: 35%; min-width: 7rem;">{{lastMedecins[1]?.nom}}</td>
+                            <td style="width: 35%; min-width: 8rem;">{{lastMedecins[1]?.prenom}}</td>
+                            <td style="width: 15%;">Medecin</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%; min-width: 5rem;">
+                                <img src="" class="shadow-4" alt="" width="50">
+                            </td>
+                            <td style="width: 35%; min-width: 7rem;">{{lastInfermiers[0]?.nom}}</td>
+                            <td style="width: 35%; min-width: 8rem;">{{lastInfermiers[0]?.prenom}}</td>
+                            <td style="width: 15%;">Infirmier</td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="width: 15%; min-width: 5rem;">
+                                <img src="" class="shadow-4" alt="" width="50">
+                            </td>
+                            <td style="width: 35%; min-width: 7rem;">{{lastInfermiers[1]?.nom}}</td>
+                            <td style="width: 35%; min-width: 8rem;">{{lastInfermiers[1]?.prenom}}</td>
+                            <td style="width: 15%;">Infirmier</td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 15%; min-width: 5rem;">
+                                <img src="" class="shadow-4" alt="" width="50">
+                            </td>
+                            <td style="width: 35%; min-width: 7rem;">{{lastPationts[0]?.nom}}</td>
+                            <td style="width: 35%; min-width: 8rem;">{{lastPationts[0]?.prenom}}</td>
+                            <td style="width: 15%;">Patient</td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="width: 15%; min-width: 5rem;">
+                                <img src="" class="shadow-4" alt="" width="50">
+                            </td>
+                            <td style="width: 35%; min-width: 7rem;">{{lastPationts[1]?.nom}}</td>
+                            <td style="width: 35%; min-width: 8rem;" >{{lastPationts[1]?.prenom}}</td>
+                            <td style="width: 15%;">Patient</td>
+                        </tr>
+                    </ng-template>
+            </p-table>
+        </div>
+    </div>
+    <div class="col-6 xl:col-6 h-50">
+        <div class="card  rounded-4 ">
+            <h5 class="text-500 mb-3" style="font-size:20px" >Répartition des Utilisateurs et Consultations :</h5>
+            <p-chart type="doughnut" [data]="data" [options]="options" />
+        </div>
+    </div>
+    <div class="col-6 xl:col-6 h-50">
+        <div class="card rounded-4">
+            <h5 class="text-500 mb-3" style="font-size:20px">Répartition des patients selon sexe :</h5>
+            <p-chart type="line" [data]="lineData" [options]="lineOptions"></p-chart>
+        </div>
+    </div>
+</div>
+
+
+

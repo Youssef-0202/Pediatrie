@@ -1,0 +1,35 @@
+{
+    "ref": "ref-1",
+    "imageOrdonnance": "imageOrdonnance-1",
+    "ordonnance": {"id": "1"},
+    "consultatuin": {"id": "1"},
+
+    "medicaments": [
+        {
+            "ref":"ref-1",
+            "sointProduit":"sointProduit-1",
+            "duree":"duree-1",
+            "consigne":"consigne-1"
+        },
+        {
+            "ref":"ref-2",
+            "sointProduit":"sointProduit-2",
+            "duree":"duree-2",
+            "consigne":"consigne-2"
+        },
+        {
+            "ref":"ref-3",
+            "sointProduit":"sointProduit-3",
+            "duree":"duree-3",
+            "consigne":"consigne-3"
+        }
+    ]
+}
+
+
+
+
+
+
+
+

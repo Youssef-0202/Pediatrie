@@ -1,0 +1,25 @@
+{
+    "ref": "ref-1",
+    "email": "email-1",
+    "nom": "nom-1",
+    "prenom": "prenom-1",
+    "telephone": "telephone-1",
+    "photoProfil": "photoProfil-1",
+    "sexe": {"id": "1"},
+    "credentialsNonExpired": "true",
+    "enabled": "true",
+    "accountNonExpired": "true",
+    "accountNonLocked": "true",
+    "passwordChanged": "true",
+    "username": "username-1",
+    "password": "password-1"
+
+}
+
+
+
+
+
+
+
+

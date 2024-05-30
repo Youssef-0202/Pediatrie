@@ -1,0 +1,19 @@
+{
+    "cin": "#string",
+    "email": "#string",
+    "nom": "#string",
+    "prenom": "#string",
+    "telephone": "#string",
+    "adresse": "#string",
+    "relation": {"id": "#number"},
+    "patient": {"id": "#number"}
+
+}
+
+
+
+
+
+
+
+

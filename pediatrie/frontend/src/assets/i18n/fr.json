@@ -1,0 +1,493 @@
+{
+    "from-to": "Elements from {first} to {last} (total {totalRecords})",
+    "new" : "Nouveau",
+    "search": "Chercher",
+    "export": "Exporter",
+    "import": "Importer",
+    "validate": "Validater",
+    "search": "Chercher...",
+    "delete": "Supprimer",
+    "cancel": "Annuler",
+    "save": "Sauvgarder",
+    "next": "Suivant",
+    "yes": "Oui",
+    "no": "Non",
+    "actions": "Actions",
+    "confirm": "Confirmer",
+    "creation": "Creation",
+    "list": "Liste",
+    "nom": "Nom",
+    "email": "Email",
+    "Données personnelles" : "Données personnelles",
+    "Username" : "Nom d'utilisateur",
+    "Télephone" : "Téléphone",
+    "Nouveau Mot de passe" : "Nouveau mot de passe",
+    "Confirmer votre Mot de passe" : "Confirmez votre mot de passe",
+    "Mot de passe" : "Mot de passe",
+    "prenom": "Prenom",
+    "Changer": "Changer",
+	
+	"actionPermission": {
+    "reference": "Référence",
+    "libelle": "Libellé",
+    "actionPermission": "Permission d'action",
+    "tabPan": "Permission d'action",
+    "header": "Liste des permissions d'action",
+    "deleteActionPermissionConfirmationMessage": "Êtes-vous sûr de vouloir supprimer la permission d'action",
+    "deleteActionPermissionsConfirmationMessage": "Êtes-vous sûr de vouloir supprimer les éléments sélectionnés"
+},
+
+"modelPermissionUser": {
+    "actionPermission": "Permission d'action",
+    "actionPermissionPlaceHolder": "Sélectionner une permission d'action",
+    "actionPermissionPlaceHolderFilter": "Rechercher par permission d'action",
+    "modelPermission": "Permission du modèle",
+    "modelPermissionPlaceHolder": "Sélectionner une permission de modèle",
+    "modelPermissionPlaceHolderFilter": "Rechercher par permission de modèle",
+    "value": "Valeur",
+    "user": "Utilisateur",
+    "userPlaceHolder": "Sélectionner un utilisateur",
+    "userPlaceHolderFilter": "Rechercher par utilisateur",
+    "subAttribute": "Sous-attribut",
+    "modelPermissionUser": "Permission du modèle de l'utilisateur",
+    "tabPan": "Permission du modèle de l'utilisateur",
+    "header": "Liste des permissions du modèle de l'utilisateur",
+    "deleteModelPermissionUserConfirmationMessage": "Êtes-vous sûr de vouloir supprimer la permission du modèle de l'utilisateur",
+    "deleteModelPermissionUsersConfirmationMessage": "Êtes-vous sûr de vouloir supprimer les éléments sélectionnés"
+},
+"role": {
+    "authority": "Autorité",
+    "role": "Rôle",
+    "tabPan": "Rôle",
+    "header": "Liste des rôles",
+    "deleteRoleConfirmationMessage": "Êtes-vous sûr de vouloir supprimer le rôle",
+    "deleteRolesConfirmationMessage": "Êtes-vous sûr de vouloir supprimer les éléments sélectionnés"
+},
+"roleUser": {
+    "role": "Rôle",
+    "rolePlaceHolder": "Sélectionner un rôle",
+    "rolePlaceHolderFilter": "Rechercher par rôle",
+    "user": "Utilisateur",
+    "userPlaceHolder": "Sélectionner un utilisateur",
+    "userPlaceHolderFilter": "Rechercher par utilisateur",
+    "roleUser": "Utilisateur de rôle",
+    "tabPan": "Utilisateur de rôle",
+    "header": "Liste des utilisateurs de rôle",
+    "deleteRoleUserConfirmationMessage": "Êtes-vous sûr de vouloir supprimer l'utilisateur de rôle",
+    "deleteRoleUsersConfirmationMessage": "Êtes-vous sûr de vouloir supprimer les éléments sélectionnés"
+},
+"user": {
+    "credentialsNonExpired": "Credentials non expirés",
+    "enabled": "Activé",
+    "email": "Email",
+    "accountNonExpired": "Compte non expiré",
+    "accountNonLocked": "Compte non verrouillé",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "passwordChanged": "Mot de passe changé",
+    "modelPermissionUsers": "Utilisateurs de permission du modèle",
+    "roleUsers": "Utilisateurs de rôle",
+    "RoleUsersPlaceHolder": "Sélectionner plusieurs rôles",
+    "user": "Utilisateur",
+    "tabPan": "Utilisateur",
+    "header": "Liste des utilisateurs",
+    "deleteUserConfirmationMessage": "Êtes-vous sûr de vouloir supprimer l'utilisateur",
+    "deleteUsersConfirmationMessage": "Êtes-vous sûr de vouloir supprimer les éléments sélectionnés"
+},
+"modelPermission": {
+    "reference": "Référence",
+    "libelle": "Libellé",
+    "modelPermission": "Permission du modèle",
+    "tabPan": "Permission du modèle",
+    "header": "Liste des permissions du modèle",
+    "deleteModelPermissionConfirmationMessage": "Êtes-vous sûr de vouloir supprimer la permission du modèle",
+    "deleteModelPermissionsConfirmationMessage": "Êtes-vous sûr de vouloir supprimer les éléments sélectionnés"
+},
+
+
+    "patientContact":{
+        "cin": "Cin",
+        "email": "Email",
+        "nom": "Nom",
+        "prenom": "Prenom",
+        "telephone": "Telephone",
+        "adresse": "Adresse",
+        "relation": "Relation",
+        "relationPlaceHolder": "Select a Relation",
+        "relationPlaceHolderFilter": "Search by Relation",
+        "patient": "Patient",
+        "patientPlaceHolder": "Select a Patient",
+        "patientPlaceHolderFilter": "Search by Patient",
+        "patientContact": "Patient contact",
+        "tabPan": "Patient contact",
+        "header": "Liste des patient contacts",
+        "deletePatientContactConfirmationMessage": "Are you sure you want to delete patient contact",
+        "deletePatientContactsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "antecedent":{
+        "ref": "Ref",
+        "allergie": "Allergie",
+        "etat_psy": "Etat_psy",
+        "respiratoire": "Respiratoire",
+        "alimentation": "Alimentation",
+        "mouvement": "Mouvement",
+        "sommeil": "Sommeil",
+        "groupeSanguin": "Groupe sanguin",
+        "groupeSanguinPlaceHolder": "Select a Groupe sanguin",
+        "groupeSanguinPlaceHolderFilter": "Search by Groupe sanguin",
+        "antecedent": "Antecedent",
+        "tabPan": "Antecedent",
+        "header": "Liste des antecedents",
+        "deleteAntecedentConfirmationMessage": "Are you sure you want to delete antecedent",
+        "deleteAntecedentsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "fichePatient":{
+        "ref": "Ref",
+        "dateFichePatient": "Date fiche patient",
+        "dateFichePatientMin": "Date fiche patient Min",
+        "dateFichePatientMax": "Date fiche patient Max",
+        "antecedentFamillial": "Antecedent famillial",
+        "histoireMaladie": "Histoire maladie",
+        "examenFichePatient": "Examen fiche patient",
+        "conclusionFichePatient": "Conclusion fiche patient",
+        "antecedent": "Antecedent",
+        "antecedentPlaceHolder": "Select a Antecedent",
+        "antecedentPlaceHolderFilter": "Search by Antecedent",
+        "consultation": "Consultation",
+        "consultationPlaceHolder": "Select a Consultation",
+        "consultationPlaceHolderFilter": "Search by Consultation",
+        "fichePatient": "Fiche patient",
+        "tabPan": "Fiche patient",
+        "header": "Liste des fiche patients",
+        "deleteFichePatientConfirmationMessage": "Are you sure you want to delete fiche patient",
+        "deleteFichePatientsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "relation":{
+        "ref": "Ref",
+        "libelle": "Libelle",
+        "relation": "Relation",
+        "tabPan": "Relation",
+        "header": "Liste des relations",
+        "deleteRelationConfirmationMessage": "Are you sure you want to delete relation",
+        "deleteRelationsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "certificat":{
+        "ref": "Ref",
+        "dateDebut": "Date debut",
+        "dateDebutMin": "Date debut Min",
+        "dateDebutMax": "Date debut Max",
+        "dateFin": "Date fin",
+        "dateFinMin": "Date fin Min",
+        "dateFinMax": "Date fin Max",
+        "description": "Description",
+        "nbrJour": "Nbr jour",
+        "nbrJourMin": "Nbr jour Min",
+        "nbrJourMax": "Nbr jour Max",
+        "consultatuin": "Consultatuin",
+        "consultatuinPlaceHolder": "Select a Consultatuin",
+        "consultatuinPlaceHolderFilter": "Search by Consultatuin",
+        "certificat": "Certificat",
+        "tabPan": "Certificat",
+        "header": "Liste des certificats",
+        "deleteCertificatConfirmationMessage": "Are you sure you want to delete certificat",
+        "deleteCertificatsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "typeImage":{
+        "ref": "Ref",
+        "libelle": "Libelle",
+        "typeImage": "Type image",
+        "tabPan": "Type image",
+        "header": "Liste des type images",
+        "deleteTypeImageConfirmationMessage": "Are you sure you want to delete type image",
+        "deleteTypeImagesConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "sexe":{
+        "ref": "Ref",
+        "libelle": "Libelle",
+        "sexe": "Sexe",
+        "tabPan": "Sexe",
+        "header": "Liste des sexes",
+        "deleteSexeConfirmationMessage": "Are you sure you want to delete sexe",
+        "deleteSexesConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "patient":{
+        "numDossier": "Num dossier",
+        "nom": "Nom",
+        "prenom": "Prenom",
+        "dateNaissance": "Date naissance",
+        "dateNaissanceMin": "Date naissance Min",
+        "dateNaissanceMax": "Date naissance Max",
+        "photoProfil": "Photo profil",
+        "sexe": "Sexe",
+        "sexePlaceHolder": "Select a Sexe",
+        "sexePlaceHolderFilter": "Search by Sexe",
+        "patientContact": "Patient contact",
+        "patient": "Patient",
+        "tabPan": "Patient",
+        "header": "Liste des patients",
+        "deletePatientConfirmationMessage": "Are you sure you want to delete patient",
+        "deletePatientsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "infermier":{
+        "ref": "Ref",
+        "email": "Email",
+        "nom": "Nom",
+        "prenom": "Prenom",
+        "dateNaissance": "Date naissance",
+        "dateNaissanceMin": "Date naissance Min",
+        "dateNaissanceMax": "Date naissance Max",
+        "telephone": "Telephone",
+        "photoProfil": "Photo profil",
+        "sexe": "Sexe",
+        "sexePlaceHolder": "Select a Sexe",
+        "sexePlaceHolderFilter": "Search by Sexe",
+        "credentialsNonExpired": "Credentials non expired",
+        "enabled": "Enabled",
+        "accountNonExpired": "Account non expired",
+        "accountNonLocked": "Account non locked",
+        "passwordChanged": "Password changed",
+        "username": "Username",
+        "password": "Password",
+        "infermier": "Infermier",
+        "tabPan": "Infermier",
+        "header": "Liste des infermiers",
+        "deleteInfermierConfirmationMessage": "Are you sure you want to delete infermier",
+        "deleteInfermiersConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "epreuve":{
+        "ref": "Ref",
+        "libelle": "Libelle",
+        "epreuve": "Epreuve",
+        "tabPan": "Epreuve",
+        "header": "Liste des epreuves",
+        "deleteEpreuveConfirmationMessage": "Are you sure you want to delete epreuve",
+        "deleteEpreuvesConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "consultation":{
+        "ref": "Ref",
+        "dateConsultation": "Date consultation",
+        "dateConsultationMin": "Date consultation Min",
+        "dateConsultationMax": "Date consultation Max",
+        "heureConsultation": "Heure consultation",
+        "heureConsultationMin": "Heure consultation Min",
+        "heureConsultationMax": "Heure consultation Max",
+        "typeConsultation": "Type consultation",
+        "medecin": "Medecin",
+        "medecinPlaceHolder": "Select a Medecin",
+        "medecinPlaceHolderFilter": "Search by Medecin",
+        "infermier": "Infermier",
+        "infermierPlaceHolder": "Select a Infermier",
+        "infermierPlaceHolderFilter": "Search by Infermier",
+        "patient": "Patient",
+        "patientPlaceHolder": "Select a Patient",
+        "patientPlaceHolderFilter": "Search by Patient",
+        "analyseMedicale": "Analyse medicale",
+        "fichePatient": "Fiche patient",
+        "radiologie": "Radiologie",
+        "diagnostic": "Diagnostic",
+        "syntheseMedicale": "Synthese medicale",
+        "consultation": "Consultation",
+        "tabPan": "Consultation",
+        "header": "Liste des consultations",
+        "deleteConsultationConfirmationMessage": "Are you sure you want to delete consultation",
+        "deleteConsultationsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "diagnostic":{
+        "ref": "Ref",
+        "dateDiagnostic": "Date diagnostic",
+        "dateDiagnosticMin": "Date diagnostic Min",
+        "dateDiagnosticMax": "Date diagnostic Max",
+        "description": "Description",
+        "consultation": "Consultation",
+        "consultationPlaceHolder": "Select a Consultation",
+        "consultationPlaceHolderFilter": "Search by Consultation",
+        "diagnostic": "Diagnostic",
+        "tabPan": "Diagnostic",
+        "header": "Liste des diagnostics",
+        "deleteDiagnosticConfirmationMessage": "Are you sure you want to delete diagnostic",
+        "deleteDiagnosticsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "traitement":{
+        "ref": "Ref",
+        "imageOrdonnance": "Image ordonnance",
+        "ordonnance": "Ordonnance",
+        "ordonnancePlaceHolder": "Select a Ordonnance",
+        "ordonnancePlaceHolderFilter": "Search by Ordonnance",
+        "consultatuin": "Consultatuin",
+        "consultatuinPlaceHolder": "Select a Consultatuin",
+        "consultatuinPlaceHolderFilter": "Search by Consultatuin",
+        "medicaments": "Medicaments",
+        "traitement": "Traitement",
+        "tabPan": "Traitement",
+        "header": "Liste des traitements",
+        "deleteTraitementConfirmationMessage": "Are you sure you want to delete traitement",
+        "deleteTraitementsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "analyseMedicale":{
+        "ref": "Ref",
+        "dateAnalyseMedicale": "Date analyse medicale",
+        "dateAnalyseMedicaleMin": "Date analyse medicale Min",
+        "dateAnalyseMedicaleMax": "Date analyse medicale Max",
+        "valeur": "Valeur",
+        "valeurMin": "Valeur Min",
+        "valeurMax": "Valeur Max",
+        "valeurRang": "Valeur rang",
+        "epreuve": "Epreuve",
+        "epreuvePlaceHolder": "Select a Epreuve",
+        "epreuvePlaceHolderFilter": "Search by Epreuve",
+        "consultation": "Consultation",
+        "consultationPlaceHolder": "Select a Consultation",
+        "consultationPlaceHolderFilter": "Search by Consultation",
+        "analyseMedicale": "Analyse medicale",
+        "tabPan": "Analyse medicale",
+        "header": "Liste des analyse medicales",
+        "deleteAnalyseMedicaleConfirmationMessage": "Are you sure you want to delete analyse medicale",
+        "deleteAnalyseMedicalesConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "radiologie":{
+        "ref": "Ref",
+        "dateRadiologie": "Date radiologie",
+        "dateRadiologieMin": "Date radiologie Min",
+        "dateRadiologieMax": "Date radiologie Max",
+        "commentaire": "Commentaire",
+        "imageScann": "Image scann",
+        "consultatuin": "Consultatuin",
+        "consultatuinPlaceHolder": "Select a Consultatuin",
+        "consultatuinPlaceHolderFilter": "Search by Consultatuin",
+        "typeImage": "Type image",
+        "typeImagePlaceHolder": "Select a Type image",
+        "typeImagePlaceHolderFilter": "Search by Type image",
+        "radiologie": "Radiologie",
+        "tabPan": "Radiologie",
+        "header": "Liste des radiologies",
+        "deleteRadiologieConfirmationMessage": "Are you sure you want to delete radiologie",
+        "deleteRadiologiesConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "medicament":{
+        "ref": "Ref",
+        "sointProduit": "Soint produit",
+        "duree": "Duree",
+        "consigne": "Consigne",
+        "traitement": "Traitement",
+        "traitementPlaceHolder": "Select a Traitement",
+        "traitementPlaceHolderFilter": "Search by Traitement",
+        "medicament": "Medicament",
+        "tabPan": "Medicament",
+        "header": "Liste des medicaments",
+        "deleteMedicamentConfirmationMessage": "Are you sure you want to delete medicament",
+        "deleteMedicamentsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "ordonnance":{
+        "ref": "Ref",
+        "nomHospital": "Nom hospital",
+        "dateOrdonnance": "Date ordonnance",
+        "dateOrdonnanceMin": "Date ordonnance Min",
+        "dateOrdonnanceMax": "Date ordonnance Max",
+        "adresseHospitla": "Adresse hospitla",
+        "signature": "Signature",
+        "traitement": "Traitement",
+        "traitementPlaceHolder": "Select a Traitement",
+        "traitementPlaceHolderFilter": "Search by Traitement",
+        "consultatuin": "Consultatuin",
+        "consultatuinPlaceHolder": "Select a Consultatuin",
+        "consultatuinPlaceHolderFilter": "Search by Consultatuin",
+        "ordonnance": "Ordonnance",
+        "tabPan": "Ordonnance",
+        "header": "Liste des ordonnances",
+        "deleteOrdonnanceConfirmationMessage": "Are you sure you want to delete ordonnance",
+        "deleteOrdonnancesConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "medecin":{
+        "ref": "Ref",
+        "email": "Email",
+        "nom": "Nom",
+        "prenom": "Prenom",
+        "dateNaissance": "Date naissance",
+        "dateNaissanceMin": "Date naissance Min",
+        "dateNaissanceMax": "Date naissance Max",
+        "telephone": "Telephone",
+        "photoProfil": "Photo profil",
+        "speciality": "Speciality",
+        "sexe": "Sexe",
+        "sexePlaceHolder": "Select a Sexe",
+        "sexePlaceHolderFilter": "Search by Sexe",
+        "credentialsNonExpired": "Credentials non expired",
+        "enabled": "Enabled",
+        "accountNonExpired": "Account non expired",
+        "accountNonLocked": "Account non locked",
+        "passwordChanged": "Password changed",
+        "username": "Username",
+        "password": "Password",
+        "medecin": "Medecin",
+        "tabPan": "Medecin",
+        "header": "Liste des medecins",
+        "deleteMedecinConfirmationMessage": "Are you sure you want to delete medecin",
+        "deleteMedecinsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "groupeSanguin":{
+        "ref": "Ref",
+        "libelle": "Libelle",
+        "groupeSanguin": "Groupe sanguin",
+        "tabPan": "Groupe sanguin",
+        "header": "Liste des groupe sanguins",
+        "deleteGroupeSanguinConfirmationMessage": "Are you sure you want to delete groupe sanguin",
+        "deleteGroupeSanguinsConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+
+    "syntheseMedicale":{
+        "ref": "Ref",
+        "dateSyntheseMedicale": "Date synthese medicale",
+        "dateSyntheseMedicaleMin": "Date synthese medicale Min",
+        "dateSyntheseMedicaleMax": "Date synthese medicale Max",
+        "description": "Description",
+        "consultation": "Consultation",
+        "consultationPlaceHolder": "Select a Consultation",
+        "consultationPlaceHolderFilter": "Search by Consultation",
+        "syntheseMedicale": "Synthese medicale",
+        "tabPan": "Synthese medicale",
+        "header": "Liste des synthese medicales",
+        "deleteSyntheseMedicaleConfirmationMessage": "Are you sure you want to delete synthese medicale",
+        "deleteSyntheseMedicalesConfirmationMessage": "Are you sure you want to delete the selected elements"
+    },
+
+"appName": "GED"
+}
+
+

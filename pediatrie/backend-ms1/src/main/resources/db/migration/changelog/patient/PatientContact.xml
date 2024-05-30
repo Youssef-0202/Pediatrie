@@ -1,0 +1,71 @@
+<!-- db/changelog-1.1-container.xml -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <!-- Create Container Table -->
+    <changeSet id="1" author="your-name">
+    <createTable tableName="patient_contact">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+        <column name="cin" type="VARCHAR(500)"/>
+        <column name="email" type="VARCHAR(500)"/>
+        <column name="nom" type="VARCHAR(500)"/>
+        <column name="prenom" type="VARCHAR(500)"/>
+        <column name="telephone" type="VARCHAR(500)"/>
+        <column name="adresse" type="VARCHAR(500)"/>
+
+        <column name="relation_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="patient_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+  </changeSet>
+
+    <!-- Add foreign key constraint -->
+  <changeSet id="2" author="your-name">
+      <addForeignKeyConstraint
+              baseTableName="patient_contact"
+              baseColumnNames="relation_id"
+              referencedTableName="relation"
+              referencedColumnNames="id"
+              constraintName="fk_patient_contact_relation"/>
+      <addForeignKeyConstraint
+              baseTableName="patient_contact"
+              baseColumnNames="patient_id"
+              referencedTableName="patient"
+              referencedColumnNames="id"
+              constraintName="fk_patient_contact_patient"/>
+
+  </changeSet>
+
+    <!-- Create Sequence for ContainerType -->
+  <changeSet id="3" author="your-name">
+    <createSequence sequenceName="patient_contact_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <!-- Load Data from CSV -->
+  <changeSet id="4" author="your-name">
+    <loadData
+            file="classpath:/db/migration/data/patient/PatientContact.csv"
+            tableName="patient_contact">
+      <column name="id" type="NUMERIC"/>
+          <column name="cin" type="STRING"/>
+          <column name="email" type="STRING"/>
+          <column name="nom" type="STRING"/>
+          <column name="prenom" type="STRING"/>
+          <column name="telephone" type="STRING"/>
+          <column name="adresse" type="STRING"/>
+        <column name="relation" type="BIGINT"/>
+        <column name="patient" type="BIGINT"/>
+    </loadData>
+  </changeSet>
+
+
+</databaseChangeLog>

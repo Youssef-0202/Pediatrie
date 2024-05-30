@@ -1,0 +1,18 @@
+{
+    "ref": "ref-1",
+    "antecedentFamillial": "antecedentFamillial-1",
+    "histoireMaladie": "histoireMaladie-1",
+    "examenFichePatient": "examenFichePatient-1",
+    "conclusionFichePatient": "conclusionFichePatient-1",
+    "antecedent": {"id": "1"},
+    "consultation": {"id": "1"}
+
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+            <include file="classpath:db/migration/changelog/patient/PatientContact.xml"/>
+        <include file="classpath:db/migration/changelog/dossie/Antecedent.xml"/>
+        <include file="classpath:db/migration/changelog/dossie/FichePatient.xml"/>
+        <include file="classpath:db/migration/changelog/patient/Relation.xml"/>
+        <include file="classpath:db/migration/changelog/gestio/Certificat.xml"/>
+        <include file="classpath:db/migration/changelog/dossie/TypeImage.xml"/>
+        <include file="classpath:db/migration/changelog/commun/Sexe.xml"/>
+        <include file="classpath:db/migration/changelog/patient/Patient.xml"/>
+        <include file="classpath:db/migration/changelog/commun/Infermier.xml"/>
+        <include file="classpath:db/migration/changelog/dossie/Epreuve.xml"/>
+        <include file="classpath:db/migration/changelog/consultatio/Consultation.xml"/>
+        <include file="classpath:db/migration/changelog/rappor/Diagnostic.xml"/>
+        <include file="classpath:db/migration/changelog/gestio/Traitement.xml"/>
+        <include file="classpath:db/migration/changelog/dossie/AnalyseMedicale.xml"/>
+        <include file="classpath:db/migration/changelog/dossie/Radiologie.xml"/>
+        <include file="classpath:db/migration/changelog/gestio/Medicament.xml"/>
+        <include file="classpath:db/migration/changelog/gestio/Ordonnance.xml"/>
+        <include file="classpath:db/migration/changelog/commun/Medecin.xml"/>
+        <include file="classpath:db/migration/changelog/dossie/GroupeSanguin.xml"/>
+        <include file="classpath:db/migration/changelog/rappor/SyntheseMedicale.xml"/>
+
+</databaseChangeLog>

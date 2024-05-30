@@ -1,0 +1,86 @@
+<div class="col-12 " style="background-color: transparent;width:1200px" >
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.5);width:100%" >
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.5);width:100%">
+            <p-toolbar >
+                <div class="p-toolbar-group-start">
+                    <button pButton pRipple label=" {{'New Dossier' | translate}}" icon="pi pi-plus" class="p-button-success mr-2 mb-2  pr-6" (click)="clickNew()" ></button>               </div>
+                <div class="p-toolbar-group-center " >
+                                            <span class="p-input-icon-left" >
+                                            <i class="pi pi-search"></i>
+                                            <input #i style="width:500px" pInputText placeholder="N° Dossier" class="pr-8 pl-8" (input)="dt.filterGlobal($event.target.value, 'contains')" [(ngModel)]="criteria.numDossier"  />
+                                    </span>
+                </div>
+                <div class="p-toolbar-group-end">
+                    <p-button icon="pi pi-search" severity="success" (click)="searchClick()" />
+                </div>
+                <div class="table"  >
+                    <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false"
+                             [globalFilterFields]="['numDossier', 'nom', 'prenom', 'dateNaissance', 'photoProfil', 'sexeref']" [(selection)]="selections"
+                             [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                             currentPageReportTemplate="{{'les éléments de {first} à {last} sur {totalRecords} ' | translate}}"
+                             [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
+                        <ng-template pTemplate="caption">
+
+                        </ng-template>
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortableColumn="numDossier">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>{{'patient.numDossier' | translate}}</span>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="nom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>{{'patient.nom' | translate}}</span>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="prenom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>{{'patient.prenom' | translate}}</span>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="dateNaissance">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>{{'patient.dateNaissance' | translate}}</span>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="photoProfil">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>{{'patient.photoProfil' | translate}}</span>
+                                    </div>
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-element>
+                            <tr>
+
+
+                                <td>{{element.numDossier}}</td>
+
+
+                                <td>{{element.nom}}</td>
+
+
+                                <td>{{element.prenom}}</td>
+
+
+                                <td>{{element.dateNaissance | date :'dd/MM/yyyy HH:mm' }}</td>
+
+
+                                <td>{{element.photoProfil}}</td>
+
+                                <td>
+                                    <button pButton pRipple icon="pi pi-pencil"  class="p-button-rounded p-button-info mr-2" (click)="showDossier(element)" ></button>
+                                </td>
+                                <app-dossier *ngIf="showDossierDetails"></app-dossier>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+
+
+            </p-toolbar>
+        </div>
+    </div>
+</div>

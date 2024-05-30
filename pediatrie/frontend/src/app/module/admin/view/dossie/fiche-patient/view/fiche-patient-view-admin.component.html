@@ -1,0 +1,56 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'fichePatient.tabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'fichePatient.tabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'fichePatient.ref' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'fichePatient.ref' | translate}}" autofocus  id="1" [ngModel]="item.ref">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'fichePatient.dateFichePatient' | translate}}</label>
+                        <p-calendar id="2" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'fichePatient.dateFichePatient' | translate}}"  [ngModel]="item.dateFichePatient" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'fichePatient.antecedentFamillial' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'fichePatient.antecedentFamillial' | translate}}" autofocus  id="3" [ngModel]="item.antecedentFamillial">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'fichePatient.histoireMaladie' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'fichePatient.histoireMaladie' | translate}}" autofocus  id="4" [ngModel]="item.histoireMaladie">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="5">{{'fichePatient.examenFichePatient' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'fichePatient.examenFichePatient' | translate}}" autofocus  id="5" [ngModel]="item.examenFichePatient">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="6">{{'fichePatient.conclusionFichePatient' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'fichePatient.conclusionFichePatient' | translate}}" autofocus  id="6" [ngModel]="item.conclusionFichePatient">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'fichePatient.antecedent' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'fichePatient.antecedent' | translate}}" autofocus  id="7" [ngModel]="item.antecedent?.ref">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="8">{{'fichePatient.consultation' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'fichePatient.consultation' | translate}}" autofocus  id="8" [ngModel]="item.consultation?.ref">
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-flexbox">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

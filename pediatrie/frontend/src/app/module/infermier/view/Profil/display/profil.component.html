@@ -1,0 +1,157 @@
+<div class="grid" >
+    <div class="col-8 col-offset-2">
+        <div class="card">
+            <!-- Navbar top -->
+            <div class="navbar-top">
+                <div class="title">
+                    <h1>Profile</h1>
+                </div>
+
+            </div>
+            <!-- End -->
+
+
+
+            <!-- Sidenav -->
+
+            <!-- End -->
+
+            <!-- Main -->
+            <div class="main">
+                <div class="sidenav">
+                    <div class="profile">
+                        <img src="./assets/layout/images/téléchargement.jpeg" alt="" width="100" height="100">
+                        <div class="name">
+                            {{authenticatedInfermier.nom}} {{authenticatedInfermier.prenom}}
+                        </div>
+                        <div class="job">
+                            Infermier
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>User name</td>
+                                <td>:</td>
+                                <td>{{authenticatedInfermier.username}}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>:</td>
+                                <td>{{ authenticatedInfermier.email }}</td>
+                            </tr>
+                            <tr>
+                                <td>Date de Naissance</td>
+                                <td>:</td>
+                                <td>{{authenticatedInfermier.dateNaissance}}</td>
+                            </tr>
+                            <tr>
+                                <td>Sexe </td>
+                                <td>:</td>
+                                <td>Femme !</td>
+                            </tr>
+                            <tr>
+                                <td>Compte Blocked </td>
+                                <td>:</td>
+                                <td>{{authenticatedInfermier.accountNonLocked ? "Non Blocked ":"Blocked"}}</td>
+                            </tr>
+                            <tr>
+                                <td>Password Changed </td>
+                                <td>:</td>
+                                <td>{{authenticatedInfermier.passwordChanged ? "Oui ":"non"}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button pButton class="p-button-raised p-button-info mr-2" (click)="showEditPassword()"  *ngIf="editActionIsValid" >Modifier </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="Edit profil"
+          [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'user.tabPan' | translate}}">
+                <div class="grid">
+
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'User Name' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                               placeholder="{{'username' | translate}}" id="4" [(ngModel)]="authenticatedInfermier.username"
+                        />
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="5">{{'First Name' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                               placeholder="{{'firstNAme' | translate}}" id="5" [(ngModel)]="authenticatedInfermier.prenom"
+                        />
+
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="6">{{'Last Name' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                               placeholder="{{'lastName' | translate}}" id="6" [(ngModel)]="authenticatedInfermier.nom"
+                        />
+
+                    </div>
+
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'Email' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                               placeholder="{{'user.email' | translate}}" id="2" [(ngModel)]="authenticatedInfermier.email"
+                        />
+                    </div>
+
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'Sexe' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                               placeholder="{{'sexe' | translate}}" id="1" [(ngModel)]="authenticatedInfermier.sexe"
+                        />
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="{{'user.password' | translate}}">
+                <div class="grid">
+
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'Enter Your Password' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text"  pInputText
+                                id="7" [(ngModel)]="newPassword"
+                        />
+                        <small class='p-error' *ngIf='passwordNotMatch'>
+                            mote de passe incorrect
+                        </small>
+                    </div>
+
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'confirm your password' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pPassword
+                              id="8" [(ngModel)]="confermedPassword"
+                        />
+                        <small class='p-error' *ngIf='validatePasswordNotExist'>la confermation est obligatoire.</small>
+
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-flexbox">
+            <button pButton pRipple label="Valider" icon="pi pi-check"
+                    (click)="editUser()"></button>
+        </div>
+    </ng-template>
+
+</p-dialog>
+
+
+
+

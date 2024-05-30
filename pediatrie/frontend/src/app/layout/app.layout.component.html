@@ -1,0 +1,19 @@
+<div class="layout-wrapper"   [ngClass]="containerClass" >
+    <app-topbar ></app-topbar>
+    <div class="layout-sidebar" style="background-color: rgba(255, 255, 255, 0.5);" >
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="layout-main-container"  >
+        <div class="layout-main"  >
+            <div class="grid"  >
+                <app-dashbord-admin *ngIf="checkAdminPath()"></app-dashbord-admin>
+                <app-dashboard-medecin *ngIf="checkMedecinPath()"></app-dashboard-medecin> <!--*ngIf="checkMedecinPath()"-->
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+        <app-footer></app-footer>
+    </div>
+    <div class="layout-mask"></div>
+</div>
+
+<!-- -->

@@ -1,0 +1,69 @@
+<div class="login-body">
+    <div class="card login-panel p-fluid">
+        <div class="mt-4">
+            <div class="grid" [formGroup]="registerForm">
+                <div class="col-12 p-sm-6 md:col-6 logo-container">
+                    <span class="guest-sign-in" style="font-weight: 600;font-size: 2rem;">Inscription</span>
+                </div>
+
+                <div class="col-12 username-container">
+                    <label>Nom</label>
+                    <div class="login-input">
+                        <input formControlName="lastName" class="mb-2 mr-2" type="text" pInputText id="2" required
+                               autofocus />
+                    </div>
+                </div>
+
+                <div class="col-12 username-container">
+                    <label>Prénom</label>
+                    <div class="login-input">
+                        <input formControlName="firstName" class="mb-2 mr-2" type="text" pInputText id="1" required
+                               autofocus />
+                    </div>
+                </div>
+
+                <div class="col-12 username-container">
+                    <label>Téléphone</label>
+                    <div class="login-input">
+                        <input formControlName="phone" class="mb-2 mr-2" type="text" pInputText id="3" required
+                               autofocus />
+                    </div>
+                </div>
+
+                <div class="col-12 username-container">
+                    <!-- <h:panelGroup> -->
+                    <label>Nom d'utilisateur </label>
+                    <div class="login-input">
+                        <input formControlName="userName" class="mb-2 mr-2" type="text" pInputText id="4" required
+                            autofocus />
+                    </div>
+                    <!-- </h:panelGroup> -->
+                </div>
+                <div class="col-12 username-container">
+                    <!-- <h:panelGroup> -->
+                    <label>Email</label>
+                    <div class="login-input">
+                        <input formControlName="email" class="mb-2 mr-2" type="email" pInputText id="9" required
+                            autofocus />
+                    </div>
+                    <!-- </h:panelGroup> -->
+                </div>
+
+                <div class="col-12 password-container">
+                    <!-- <h:panelGroup> -->
+                    <label>Mot de Passe </label>
+                    <div class="login-input">
+                        <input formControlName="password" pPassword type="password" />
+                    </div>
+                    <!-- </h:panelGroup> -->
+                </div>
+
+
+                <div class="col-12 p-sm-6 md:col-6 button">
+                    <button pButton icon="pi pi-check" label="S'inscrire" [disabled]="registerForm.invalid"
+                        (click)="submit()"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

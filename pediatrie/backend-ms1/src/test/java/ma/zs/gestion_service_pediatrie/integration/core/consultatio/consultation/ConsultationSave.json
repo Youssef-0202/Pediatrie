@@ -1,0 +1,110 @@
+{
+    "ref": "ref-1",
+    "typeConsultation": "typeConsultation-1",
+    "medecin": {"id": "1"},
+    "infermier": {"id": "1"},
+    "patient": {"id": "1"},
+
+    "analyseMedicale": [
+        {
+            "ref":"ref-1",
+            "valeur":"10",
+            "valeurRang":"valeurRang-1",
+            "epreuve":{"id": "1"}
+        },
+        {
+            "ref":"ref-2",
+            "valeur":"20",
+            "valeurRang":"valeurRang-2",
+            "epreuve":{"id": "2"}
+        },
+        {
+            "ref":"ref-3",
+            "valeur":"30",
+            "valeurRang":"valeurRang-3",
+            "epreuve":{"id": "3"}
+        }
+    ],
+    "fichePatient": [
+        {
+            "ref":"ref-1",
+            "antecedentFamillial":"antecedentFamillial-1",
+            "histoireMaladie":"histoireMaladie-1",
+            "examenFichePatient":"examenFichePatient-1",
+            "conclusionFichePatient":"conclusionFichePatient-1",
+            "antecedent":{"id": "1"}
+        },
+        {
+            "ref":"ref-2",
+            "antecedentFamillial":"antecedentFamillial-2",
+            "histoireMaladie":"histoireMaladie-2",
+            "examenFichePatient":"examenFichePatient-2",
+            "conclusionFichePatient":"conclusionFichePatient-2",
+            "antecedent":{"id": "2"}
+        },
+        {
+            "ref":"ref-3",
+            "antecedentFamillial":"antecedentFamillial-3",
+            "histoireMaladie":"histoireMaladie-3",
+            "examenFichePatient":"examenFichePatient-3",
+            "conclusionFichePatient":"conclusionFichePatient-3",
+            "antecedent":{"id": "3"}
+        }
+    ],
+    "radiologie": [
+        {
+            "ref":"ref-1",
+            "commentaire":"commentaire-1",
+            "imageScann":"imageScann-1",
+            "typeImage":{"id": "1"}
+        },
+        {
+            "ref":"ref-2",
+            "commentaire":"commentaire-2",
+            "imageScann":"imageScann-2",
+            "typeImage":{"id": "2"}
+        },
+        {
+            "ref":"ref-3",
+            "commentaire":"commentaire-3",
+            "imageScann":"imageScann-3",
+            "typeImage":{"id": "3"}
+        }
+    ],
+    "diagnostic": [
+        {
+            "ref":"ref-1",
+            "description":"description-1"
+        },
+        {
+            "ref":"ref-2",
+            "description":"description-2"
+        },
+        {
+            "ref":"ref-3",
+            "description":"description-3"
+        }
+    ],
+    "syntheseMedicale": [
+        {
+            "ref":"ref-1",
+            "description":"description-1"
+        },
+        {
+            "ref":"ref-2",
+            "description":"description-2"
+        },
+        {
+            "ref":"ref-3",
+            "description":"description-3"
+        }
+    ]
+}
+
+
+
+
+
+
+
+

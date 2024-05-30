@@ -1,0 +1,368 @@
+<div class="grid"  *ngIf="listActionIsValid">
+    <div class="col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="mb-4">
+                <ng-template pTemplate="left">
+                                        <button pButton pRipple label=" {{'new' | translate}}" icon="pi pi-plus" class="p-button-info mr-2 mb-2" (click)="openCreate('Medecin')" *ngIf="createActionIsValid"></button>
+                    <button [disabled]="isSelectionDisabled()" pButton pRipple label=" {{'delete' | translate}}" icon="pi pi-trash" class="p-button-danger mr-2 mb-2" (click)=deleteMultiple()  *ngIf="deleteActionIsValid"></button>
+                    <button pButton pRipple label=" {{'search' | translate}}" icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}" class="p-button-secondary mr-2 mb-2" (click)="this.showSearch()"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label=" {{'export' | translate}}" icon="pi pi-download" styleClass="p-button-secondary" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="col-12">
+                    <div class="flex flex-wrap p-fluid col-12">
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="1">{{'medecin.ref' | translate}}</label>
+                            <input  class="w-full"  pInputText id="1" type="text"  [(ngModel)]="criteria.refLike">
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="2">{{'medecin.email' | translate}}</label>
+                            <input  class="w-full"  pInputText id="2" type="text"  [(ngModel)]="criteria.emailLike">
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="3">{{'medecin.nom' | translate}}</label>
+                            <input  class="w-full"  pInputText id="3" type="text"  [(ngModel)]="criteria.nomLike">
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="4">{{'medecin.prenom' | translate}}</label>
+                            <input  class="w-full"  pInputText id="4" type="text"  [(ngModel)]="criteria.prenomLike">
+                        </div>
+
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label class="font-bold block mb-2" for="5-1">{{'medecin.dateNaissanceMin' | translate}}</label>
+                            <p-calendar class="mr-2" [(ngModel)]="criteria.dateNaissanceFrom"
+                                    id="5-1" dateFormat="dd-MM-yy"  [showIcon]="true"  class="p-fluid"></p-calendar>
+                        </div>
+
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="5-2">{{'medecin.dateNaissanceMax' | translate}}</label>
+                            <p-calendar class="mr-2" [(ngModel)]="criteria.dateNaissanceTo"
+                                    id="5-2" dateFormat="dd-MM-yy"  [showIcon]="true" class="p-fluid"></p-calendar>
+                        </div>
+
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="6">{{'medecin.telephone' | translate}}</label>
+                            <input  class="w-full"  pInputText id="6" type="text"  [(ngModel)]="criteria.telephoneLike">
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="7">{{'medecin.photoProfil' | translate}}</label>
+                            <input  class="w-full"  pInputText id="7" type="text"  [(ngModel)]="criteria.photoProfilLike">
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="8">{{'medecin.speciality' | translate}}</label>
+                            <input  class="w-full"  pInputText id="8" type="text"  [(ngModel)]="criteria.specialityLike">
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="9-2">{{'medecin.sexe' | translate}}</label>
+                            <p-dropdown [options]="sexes" [(ngModel)]="criteria.sexe" id="9" [filter]="true" class="p-fluid"
+                                        [showClear]="true"  placeholder="{{'medecin.sexe' | translate}}" optionLabel="ref">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="10">{{'medecin.credentialsNonExpired' | translate}}</label>
+                            <p-dropdown  id="10" [options]="yesOrNoCredentialsNonExpired" [(ngModel)]="criteria.credentialsNonExpired"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'medecin.credentialsNonExpired' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="11">{{'medecin.enabled' | translate}}</label>
+                            <p-dropdown  id="11" [options]="yesOrNoEnabled" [(ngModel)]="criteria.enabled"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'medecin.enabled' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="12">{{'medecin.accountNonExpired' | translate}}</label>
+                            <p-dropdown  id="12" [options]="yesOrNoAccountNonExpired" [(ngModel)]="criteria.accountNonExpired"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'medecin.accountNonExpired' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="13">{{'medecin.accountNonLocked' | translate}}</label>
+                            <p-dropdown  id="13" [options]="yesOrNoAccountNonLocked" [(ngModel)]="criteria.accountNonLocked"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'medecin.accountNonLocked' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="14">{{'medecin.passwordChanged' | translate}}</label>
+                            <p-dropdown  id="14" [options]="yesOrNoPasswordChanged" [(ngModel)]="criteria.passwordChanged"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'medecin.passwordChanged' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="15">{{'medecin.username' | translate}}</label>
+                            <input  class="w-full"  pInputText id="15" type="text"  [(ngModel)]="criteria.usernameLike">
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="16">{{'medecin.password' | translate}}</label>
+                            <input  class="w-full"  pInputText id="16" type="text"  [(ngModel)]="criteria.passwordLike">
+                        </div>
+                    </div>
+                    <div [style]="{ marginTop : '1rem', display: 'flex', justifyContent: 'flex-end' }">
+                        <button pButton pRipple label="{{'validate' | translate}}" icon="pi pi-sort-amount-down" class="p-button-info mr-2" (click)="findPaginatedByCriteria()"></button>
+                    </div>
+                </div>
+
+
+            </p-toolbar>
+
+
+            <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false"
+                    [globalFilterFields]="['ref', 'email', 'nom', 'prenom', 'dateNaissance', 'telephone', 'photoProfil', 'speciality', 'sexeref', 'credentialsNonExpired', 'enabled', 'accountNonExpired', 'accountNonLocked', 'passwordChanged', 'username', 'password']" [(selection)]="selections"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                    currentPageReportTemplate="{{'les éléments de {first} à {last} sur {totalRecords} ' | translate}}"
+                    [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column flex-row justify-content-between table-header">
+                        <h5 class="p-m-0">{{'medecin.header' | translate}}</h5>
+                        <span class="p-input-icon-left ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="{{'searchInput' | translate}}" (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                                
+                        <th pSortableColumn="ref">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.ref' | translate}}</span>
+                                <p-sortIcon field="ref"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.ref" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="email">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.email' | translate}}</span>
+                                <p-sortIcon field="email"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.email" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="nom">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.nom' | translate}}</span>
+                                <p-sortIcon field="nom"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.nom" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="prenom">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.prenom' | translate}}</span>
+                                <p-sortIcon field="prenom"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.prenom" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="dateNaissance">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.dateNaissance' | translate}}</span>
+                                <p-sortIcon field="dateNaissance"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="telephone">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.telephone' | translate}}</span>
+                                <p-sortIcon field="telephone"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.telephone" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="photoProfil">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.photoProfil' | translate}}</span>
+                                <p-sortIcon field="photoProfil"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.photoProfil" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="speciality">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.speciality' | translate}}</span>
+                                <p-sortIcon field="speciality"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.speciality" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="sexe">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.sexe' | translate}}</span>
+                                <p-sortIcon field="sexe"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                <!-- 
+                        <th pSortableColumn="credentialsNonExpired">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.credentialsNonExpired' | translate}}</span>
+                                <p-sortIcon field="credentialsNonExpired"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="enabled">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.enabled' | translate}}</span>
+                                <p-sortIcon field="enabled"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="accountNonExpired">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.accountNonExpired' | translate}}</span>
+                                <p-sortIcon field="accountNonExpired"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="accountNonLocked">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.accountNonLocked' | translate}}</span>
+                                <p-sortIcon field="accountNonLocked"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="passwordChanged">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.passwordChanged' | translate}}</span>
+                                <p-sortIcon field="passwordChanged"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="username">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.username' | translate}}</span>
+                                <p-sortIcon field="username"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.username" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="password">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'medecin.password' | translate}}</span>
+                                <p-sortIcon field="password"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.password" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                --> 
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-element>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="element"></p-tableCheckbox>
+                        </td>
+                            
+                        <td>{{element.ref}}</td>
+                            
+                            
+                        <td>{{element.email}}</td>
+                            
+                            
+                        <td>{{element.nom}}</td>
+                            
+                            
+                        <td>{{element.prenom}}</td>
+                            
+                            
+                        <td>{{element.dateNaissance | date :'dd/MM/yyyy HH:mm' }}</td>
+                            
+                            
+                        <td>{{element.telephone}}</td>
+                            
+                            
+                        <td>{{element.photoProfil}}</td>
+                            
+                            
+                        <td>{{element.speciality}}</td>
+                            
+                            
+                        <td>{{element.sexe?.ref}}</td>
+                            
+                             <!-- 
+                        <td><i *ngIf="element.credentialsNonExpired" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.credentialsNonExpired" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+                             --> 
+                             <!-- 
+                        <td><i *ngIf="element.enabled" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.enabled" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+                             --> 
+                             <!-- 
+                        <td><i *ngIf="element.accountNonExpired" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.accountNonExpired" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+                             --> 
+                             <!-- 
+                        <td><i *ngIf="element.accountNonLocked" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.accountNonLocked" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+                             --> 
+                             <!-- 
+                        <td><i *ngIf="element.passwordChanged" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.passwordChanged" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+                             --> 
+                             <!-- 
+                        <td>{{element.username}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.password}}</td>
+                             --> 
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"  class="p-button-rounded p-button-info mr-2" (click)="edit(element)"  *ngIf="editActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-secondary mr-2" (click)="view(element)"  *ngIf="viewActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-2" (click)="delete(element)"  *ngIf="deleteActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning mr-2" (click)="duplicate(element)"  *ngIf="duplicateActionIsValid"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="summary">
+                    <p-paginator  [rows]="10" [totalRecords]="totalRecords" (onPageChange)="onPage($event)"></p-paginator>
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale il {{items ? totalRecords == 1 ? 'y a' : 'y a' : 'y a' }} {{items ? totalRecords : 0 }} {{items ? totalRecords == 1 ? 'medecin' : 'medecins' : 0 }}.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-medecin-create-medecin  *ngIf="createDialog  && createActionIsValid"></app-medecin-create-medecin>
+        <app-medecin-edit-medecin  *ngIf="editDialog  && editActionIsValid"></app-medecin-edit-medecin>
+        <app-medecin-view-medecin  *ngIf="viewDialog  && viewActionIsValid"></app-medecin-view-medecin>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+
+<p-card header="Permission not allowed" *ngIf="!listActionIsValid">
+    <p class="m-0">
+        You don't have permission to access !
+    </p>
+</p-card>

@@ -1,0 +1,226 @@
+<div class="grid"  *ngIf="listActionIsValid">
+    <div class="col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="mb-4">
+                <ng-template pTemplate="left">
+                                        <button pButton pRipple label=" {{'new' | translate}}" icon="pi pi-plus" class="p-button-info mr-2 mb-2" (click)="openCreate('FichePatient')" *ngIf="createActionIsValid"></button>
+                    <button [disabled]="isSelectionDisabled()" pButton pRipple label=" {{'delete' | translate}}" icon="pi pi-trash" class="p-button-danger mr-2 mb-2" (click)=deleteMultiple()  *ngIf="deleteActionIsValid"></button>
+                    <button pButton pRipple label=" {{'search' | translate}}" icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}" class="p-button-secondary mr-2 mb-2" (click)="this.showSearch()"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label=" {{'export' | translate}}" icon="pi pi-download" styleClass="p-button-secondary" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="col-12">
+                    <div class="flex flex-wrap p-fluid col-12">
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="1">{{'fichePatient.ref' | translate}}</label>
+                            <input  class="w-full"  pInputText id="1" type="text"  [(ngModel)]="criteria.refLike">
+                        </div>
+
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label class="font-bold block mb-2" for="2-1">{{'fichePatient.dateFichePatientMin' | translate}}</label>
+                            <p-calendar class="mr-2" [(ngModel)]="criteria.dateFichePatientFrom"
+                                    id="2-1" dateFormat="dd-MM-yy"  [showIcon]="true"  class="p-fluid"></p-calendar>
+                        </div>
+
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="2-2">{{'fichePatient.dateFichePatientMax' | translate}}</label>
+                            <p-calendar class="mr-2" [(ngModel)]="criteria.dateFichePatientTo"
+                                    id="2-2" dateFormat="dd-MM-yy"  [showIcon]="true" class="p-fluid"></p-calendar>
+                        </div>
+
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="3">{{'fichePatient.antecedentFamillial' | translate}}</label>
+                            <input  class="w-full"  pInputText id="3" type="text"  [(ngModel)]="criteria.antecedentFamillialLike">
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="4">{{'fichePatient.histoireMaladie' | translate}}</label>
+                            <input  class="w-full"  pInputText id="4" type="text"  [(ngModel)]="criteria.histoireMaladieLike">
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="5">{{'fichePatient.examenFichePatient' | translate}}</label>
+                            <input  class="w-full"  pInputText id="5" type="text"  [(ngModel)]="criteria.examenFichePatientLike">
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="6">{{'fichePatient.conclusionFichePatient' | translate}}</label>
+                            <input  class="w-full"  pInputText id="6" type="text"  [(ngModel)]="criteria.conclusionFichePatientLike">
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="7-2">{{'fichePatient.antecedent' | translate}}</label>
+                            <p-dropdown [options]="antecedents" [(ngModel)]="criteria.antecedent" id="7" [filter]="true" class="p-fluid"
+                                        [showClear]="true"  placeholder="{{'fichePatient.antecedent' | translate}}" optionLabel="ref">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="8-2">{{'fichePatient.consultation' | translate}}</label>
+                            <p-dropdown [options]="consultations" [(ngModel)]="criteria.consultation" id="8" [filter]="true" class="p-fluid"
+                                        [showClear]="true"  placeholder="{{'fichePatient.consultation' | translate}}" optionLabel="ref">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                    <div [style]="{ marginTop : '1rem', display: 'flex', justifyContent: 'flex-end' }">
+                        <button pButton pRipple label="{{'validate' | translate}}" icon="pi pi-sort-amount-down" class="p-button-info mr-2" (click)="findPaginatedByCriteria()"></button>
+                    </div>
+                </div>
+
+
+            </p-toolbar>
+
+
+            <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false"
+                    [globalFilterFields]="['ref', 'dateFichePatient', 'antecedentFamillial', 'histoireMaladie', 'examenFichePatient', 'conclusionFichePatient', 'antecedentref', 'consultationref']" [(selection)]="selections"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                    currentPageReportTemplate="{{'les éléments de {first} à {last} sur {totalRecords} ' | translate}}"
+                    [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column flex-row justify-content-between table-header">
+                        <h5 class="p-m-0">{{'fichePatient.header' | translate}}</h5>
+                        <span class="p-input-icon-left ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="{{'searchInput' | translate}}" (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                                
+                        <th pSortableColumn="ref">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'fichePatient.ref' | translate}}</span>
+                                <p-sortIcon field="ref"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.ref" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="dateFichePatient">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'fichePatient.dateFichePatient' | translate}}</span>
+                                <p-sortIcon field="dateFichePatient"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="antecedentFamillial">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'fichePatient.antecedentFamillial' | translate}}</span>
+                                <p-sortIcon field="antecedentFamillial"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.antecedentFamillial" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="histoireMaladie">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'fichePatient.histoireMaladie' | translate}}</span>
+                                <p-sortIcon field="histoireMaladie"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.histoireMaladie" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="examenFichePatient">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'fichePatient.examenFichePatient' | translate}}</span>
+                                <p-sortIcon field="examenFichePatient"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.examenFichePatient" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="conclusionFichePatient">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'fichePatient.conclusionFichePatient' | translate}}</span>
+                                <p-sortIcon field="conclusionFichePatient"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.conclusionFichePatient" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="antecedent">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'fichePatient.antecedent' | translate}}</span>
+                                <p-sortIcon field="antecedent"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="consultation">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'fichePatient.consultation' | translate}}</span>
+                                <p-sortIcon field="consultation"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-element>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="element"></p-tableCheckbox>
+                        </td>
+                            
+                        <td>{{element.ref}}</td>
+                            
+                            
+                        <td>{{element.dateFichePatient | date :'dd/MM/yyyy HH:mm' }}</td>
+                            
+                            
+                        <td>{{element.antecedentFamillial}}</td>
+                            
+                            
+                        <td>{{element.histoireMaladie}}</td>
+                            
+                            
+                        <td>{{element.examenFichePatient}}</td>
+                            
+                            
+                        <td>{{element.conclusionFichePatient}}</td>
+                            
+                            
+                        <td>{{element.antecedent?.ref}}</td>
+                            
+                            
+                        <td>{{element.consultation?.ref}}</td>
+                            
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"  class="p-button-rounded p-button-info mr-2" (click)="edit(element)"  *ngIf="editActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-secondary mr-2" (click)="view(element)"  *ngIf="viewActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-2" (click)="delete(element)"  *ngIf="deleteActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning mr-2" (click)="duplicate(element)"  *ngIf="duplicateActionIsValid"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="summary">
+                    <p-paginator  [rows]="10" [totalRecords]="totalRecords" (onPageChange)="onPage($event)"></p-paginator>
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale il {{items ? totalRecords == 1 ? 'y a' : 'y a' : 'y a' }} {{items ? totalRecords : 0 }} {{items ? totalRecords == 1 ? 'fiche patient' : 'fiche patients' : 0 }}.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-fiche-patient-create-infermier  *ngIf="createDialog  && createActionIsValid"></app-fiche-patient-create-infermier>
+        <app-fiche-patient-edit-infermier  *ngIf="editDialog  && editActionIsValid"></app-fiche-patient-edit-infermier>
+        <app-fiche-patient-view-infermier  *ngIf="viewDialog  && viewActionIsValid"></app-fiche-patient-view-infermier>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+
+<p-card header="Permission not allowed" *ngIf="!listActionIsValid">
+    <p class="m-0">
+        You don't have permission to access !
+    </p>
+</p-card>

@@ -1,0 +1,117 @@
+    <p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="{{'infermier.tabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+        <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="{{'infermier.tabPan' | translate}}">
+                        <div class="grid">
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="1">{{'infermier.ref' | translate}}<span style="color: red;">*</span></label>
+                                            <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'infermier.ref' | translate}}" id="1" [(ngModel)]="item.ref"
+                                                   [ngClass]="{'ng-invalid ng-dirty' : !validInfermierRef}"  />
+                                            <small class='p-error' *ngIf='!validInfermierRef'>Ref est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="2">{{'infermier.email' | translate}}<span style="color: red;">*</span></label>
+                                            <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'infermier.email' | translate}}" id="2" [(ngModel)]="item.email"
+                                                   [ngClass]="{'ng-invalid ng-dirty' : !validInfermierEmail}"  />
+                                            <small class='p-error' *ngIf='!validInfermierEmail'>Email est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="3">{{'infermier.nom' | translate}}</label>
+                                            <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'infermier.nom' | translate}}" id="3" [(ngModel)]="item.nom"
+                                                    />
+
+                                        </div>
+
+
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="4">{{'infermier.prenom' | translate}}</label>
+                                            <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'infermier.prenom' | translate}}" id="4" [(ngModel)]="item.prenom"
+                                                    />
+
+                                        </div>
+
+
+                            <div class="field col-12 md:col-6">
+                                <label for="14">{{'infermier.username' | translate}}</label>
+                                <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'infermier.username' | translate}}" id="14" [(ngModel)]="item.username"
+                                />
+
+                            </div>
+
+
+
+                            <div class="field col-12 md:col-6">
+                                <label for="15">{{'infermier.password' | translate}}</label>
+                                <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'infermier.password' | translate}}" id="15" [(ngModel)]="item.password"
+                                />
+
+                            </div>
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="5">{{'infermier.dateNaissance' | translate}}</label>
+                                            <p-calendar appendTo="body" id="5"  [showTime]="true" [showSeconds]="false" placeholder="{{'infermier.dateNaissance' | translate}}"  [(ngModel)]="item.dateNaissance"
+                                                        dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+
+                                        </div>
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="6">{{'infermier.telephone' | translate}}</label>
+                                            <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'infermier.telephone' | translate}}" id="6" [(ngModel)]="item.telephone"
+                                                    />
+
+                                        </div>
+
+
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="7">{{'infermier.photoProfil' | translate}}</label>
+                                            <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'infermier.photoProfil' | translate}}" id="7" [(ngModel)]="item.photoProfil"
+                                                    />
+
+                                        </div>
+
+
+
+                                    <div class="field col-11 md:col-6">
+                                        <label for="8">{{'infermier.sexe' | translate}}</label>
+                                        <p-dropdown  appendTo="body"  [options]="sexes" [(ngModel)]="item.sexe" id="8" [filter]="true" filterMatchMode="contains"
+                                                     [showClear]="true" optionLabel="ref" placeholder="{{'infermier.sexe' | translate}}"  >
+                                        </p-dropdown>
+
+                                    </div>
+
+
+
+
+
+
+
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer" >
+            <div class="p-flexbox">
+
+                    <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check"  (click)="edit()"></button>
+
+
+                        <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideEditDialog()"></button>
+
+
+            </div>
+        </ng-template>
+
+    </p-dialog>

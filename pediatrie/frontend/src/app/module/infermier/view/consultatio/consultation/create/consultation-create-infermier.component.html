@@ -1,0 +1,437 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'consultation.tabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'consultation.tabPan' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="1">{{'consultation.ref' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'consultation.ref' | translate}}" id="1" [(ngModel)]="item.ref"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validConsultationRef}"  />
+                                                    <small class='p-error' *ngIf='!validConsultationRef'>Ref est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="2">{{'consultation.dateConsultation' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="2"  [showTime]="true" [showSeconds]="false" placeholder="{{'consultation.dateConsultation' | translate}}"  [(ngModel)]="item.dateConsultation"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="3">{{'consultation.heureConsultation' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="3"  [showTime]="true" [showSeconds]="false" placeholder="{{'consultation.heureConsultation' | translate}}"  [(ngModel)]="item.heureConsultation"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="4">{{'consultation.typeConsultation' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'consultation.typeConsultation' | translate}}" id="4" [(ngModel)]="item.typeConsultation"
+                                                             />
+                                                    
+                                                </div>
+
+
+
+                                            <div class="field col-11 md:col-6">
+                                                <label for="5">{{'consultation.medecin' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="medecins" [(ngModel)]="item.medecin" id="5" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="email" placeholder="{{'consultation.medecin' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+
+                                            <div class="field col-11 md:col-6">
+                                                <label for="6">{{'consultation.infermier' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="infermiers" [(ngModel)]="item.infermier" id="6" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="email" placeholder="{{'consultation.infermier' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+
+                                            <div class="field col-11 md:col-6">
+                                                <label for="7">{{'consultation.patient' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="patients" [(ngModel)]="item.patient" id="7" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="numDossier" placeholder="{{'consultation.patient' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+
+                                </div>
+                            </p-tabPanel>
+                                    <p-tabPanel header="{{'consultation.analyseMedicale' | translate}}">
+                                        <p-tabView [(activeIndex)]="activeTab">
+                                            <p-tabPanel header="Création">
+                                                    <div class="grid">
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="1">Ref<span style="color: red;">*</span></label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Ref"
+                                                                               id="1" [(ngModel)]="analyseMedicaleElement.ref" autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validAnalyseMedicaleRef}"  >
+                                                                        <small class='p-error' *ngIf='!validAnalyseMedicaleRef'>Ref est obligatoire.</small>
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="2">Date analyse medicale</label>
+                                                                        <p-calendar appendTo="body" id="2"  [showTime]="true" [showSeconds]="false" placeholder="Date analyse medicale" [(ngModel)]="analyseMedicaleElement.dateAnalyseMedicale"
+                                                                                dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="3">Valeur</label>
+                                                                        <p-inputNumber class="mb-2 mr-2" id="valeur" placeholder="Valeur"  [(ngModel)]="analyseMedicaleElement.valeur"></p-inputNumber>
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="4">Valeur rang</label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Valeur rang"
+                                                                               id="4" [(ngModel)]="analyseMedicaleElement.valeurRang" autofocus   >
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-11 md:col-6">
+                                                                        <label>Epreuve</label>
+                                                                        <p-dropdown  appendTo="body"  [options]="epreuves" [(ngModel)]="analyseMedicaleElement.epreuve"
+                                                                                     id="5"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="ref"
+                                                                                     placeholder="Epreuve"  >
+                                                                        </p-dropdown>
+                                                                        
+                                                                    </div>
+
+                                                        <div class="field col-12 md:col-1">
+                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addAnalyseMedicale()"></button>
+                                                        </div>
+
+                                                    </div>
+                                            </p-tabPanel>
+                                            <p-tabPanel header="Liste {{item.analyseMedicale?.length > 0 ? '(' + item.analyseMedicale?.length + ')' : ''}}">
+                                                    <div class="card">
+                                                        <p-table [value]="item.analyseMedicale" [scrollable]="true" scrollHeight="200px">
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                                <th>Ref</th>
+                                                                                <th>Date analyse medicale</th>
+                                                                                <th>Valeur</th>
+                                                                                <th>Valeur rang</th>
+                                                                                <th>Epreuve</th>
+                                                                    <th>Actions</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-p>
+                                                                <tr>
+                                                                                <td>{{p.ref}}</td>
+                                                                                <td>{{p.dateAnalyseMedicale | date: dateFormatColumn}}</td>
+                                                                                <td>{{p.valeur}}</td>
+                                                                                <td>{{p.valeurRang}}</td>
+                                                                            <td>{{p.epreuve?.ref}}</td>
+                                                                    <td>
+                                                                        <button (click)="deleteAnalyseMedicale(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
+                                                                        <button (click)="editAnalyseMedicale(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+
+                                            </p-tabPanel>
+                                        </p-tabView>
+                                    </p-tabPanel>
+
+                                    <p-tabPanel header="{{'consultation.fichePatient' | translate}}">
+                                        <p-tabView [(activeIndex)]="activeTab">
+                                            <p-tabPanel header="Création">
+                                                    <div class="grid">
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="1">Ref<span style="color: red;">*</span></label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Ref"
+                                                                               id="1" [(ngModel)]="fichePatientElement.ref" autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validFichePatientRef}"  >
+                                                                        <small class='p-error' *ngIf='!validFichePatientRef'>Ref est obligatoire.</small>
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="2">Date fiche patient</label>
+                                                                        <p-calendar appendTo="body" id="2"  [showTime]="true" [showSeconds]="false" placeholder="Date fiche patient" [(ngModel)]="fichePatientElement.dateFichePatient"
+                                                                                dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="3">Antecedent famillial</label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Antecedent famillial"
+                                                                               id="3" [(ngModel)]="fichePatientElement.antecedentFamillial" autofocus   >
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="4">Histoire maladie</label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Histoire maladie"
+                                                                               id="4" [(ngModel)]="fichePatientElement.histoireMaladie" autofocus   >
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="5">Examen fiche patient</label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Examen fiche patient"
+                                                                               id="5" [(ngModel)]="fichePatientElement.examenFichePatient" autofocus   >
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="6">Conclusion fiche patient</label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Conclusion fiche patient"
+                                                                               id="6" [(ngModel)]="fichePatientElement.conclusionFichePatient" autofocus   >
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-11 md:col-6">
+                                                                        <label>Antecedent</label>
+                                                                        <p-dropdown  appendTo="body"  [options]="antecedents" [(ngModel)]="fichePatientElement.antecedent"
+                                                                                     id="7"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="ref"
+                                                                                     placeholder="Antecedent"  >
+                                                                        </p-dropdown>
+                                                                        
+                                                                    </div>
+
+                                                        <div class="field col-12 md:col-1">
+                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addFichePatient()"></button>
+                                                        </div>
+
+                                                    </div>
+                                            </p-tabPanel>
+                                            <p-tabPanel header="Liste {{item.fichePatient?.length > 0 ? '(' + item.fichePatient?.length + ')' : ''}}">
+                                                    <div class="card">
+                                                        <p-table [value]="item.fichePatient" [scrollable]="true" scrollHeight="200px">
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                                <th>Ref</th>
+                                                                                <th>Date fiche patient</th>
+                                                                                <th>Antecedent famillial</th>
+                                                                                <th>Histoire maladie</th>
+                                                                                <th>Examen fiche patient</th>
+                                                                                <th>Conclusion fiche patient</th>
+                                                                                <th>Antecedent</th>
+                                                                    <th>Actions</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-p>
+                                                                <tr>
+                                                                                <td>{{p.ref}}</td>
+                                                                                <td>{{p.dateFichePatient | date: dateFormatColumn}}</td>
+                                                                                <td>{{p.antecedentFamillial}}</td>
+                                                                                <td>{{p.histoireMaladie}}</td>
+                                                                                <td>{{p.examenFichePatient}}</td>
+                                                                                <td>{{p.conclusionFichePatient}}</td>
+                                                                            <td>{{p.antecedent?.ref}}</td>
+                                                                    <td>
+                                                                        <button (click)="deleteFichePatient(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
+                                                                        <button (click)="editFichePatient(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+
+                                            </p-tabPanel>
+                                        </p-tabView>
+                                    </p-tabPanel>
+
+                                    <p-tabPanel header="{{'consultation.radiologie' | translate}}">
+                                        <p-tabView [(activeIndex)]="activeTab">
+                                            <p-tabPanel header="Création">
+                                                    <div class="grid">
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="1">Ref<span style="color: red;">*</span></label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Ref"
+                                                                               id="1" [(ngModel)]="radiologieElement.ref" autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validRadiologieRef}"  >
+                                                                        <small class='p-error' *ngIf='!validRadiologieRef'>Ref est obligatoire.</small>
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="2">Date radiologie</label>
+                                                                        <p-calendar appendTo="body" id="2"  [showTime]="true" [showSeconds]="false" placeholder="Date radiologie" [(ngModel)]="radiologieElement.dateRadiologie"
+                                                                                dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="3">Commentaire</label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Commentaire"
+                                                                               id="3" [(ngModel)]="radiologieElement.commentaire" autofocus   >
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="4">Image scann</label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Image scann"
+                                                                               id="4" [(ngModel)]="radiologieElement.imageScann" autofocus   >
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-11 md:col-6">
+                                                                        <label>Type image</label>
+                                                                        <p-dropdown  appendTo="body"  [options]="typeImages" [(ngModel)]="radiologieElement.typeImage"
+                                                                                     id="6"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="ref"
+                                                                                     placeholder="Type image"  >
+                                                                        </p-dropdown>
+                                                                        
+                                                                    </div>
+
+                                                        <div class="field col-12 md:col-1">
+                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addRadiologie()"></button>
+                                                        </div>
+
+                                                    </div>
+                                            </p-tabPanel>
+                                            <p-tabPanel header="Liste {{item.radiologie?.length > 0 ? '(' + item.radiologie?.length + ')' : ''}}">
+                                                    <div class="card">
+                                                        <p-table [value]="item.radiologie" [scrollable]="true" scrollHeight="200px">
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                                <th>Ref</th>
+                                                                                <th>Date radiologie</th>
+                                                                                <th>Commentaire</th>
+                                                                                <th>Image scann</th>
+                                                                                <th>Type image</th>
+                                                                    <th>Actions</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-p>
+                                                                <tr>
+                                                                                <td>{{p.ref}}</td>
+                                                                                <td>{{p.dateRadiologie | date: dateFormatColumn}}</td>
+                                                                                <td>{{p.commentaire}}</td>
+                                                                                <td>{{p.imageScann}}</td>
+                                                                            <td>{{p.typeImage?.ref}}</td>
+                                                                    <td>
+                                                                        <button (click)="deleteRadiologie(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
+                                                                        <button (click)="editRadiologie(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+
+                                            </p-tabPanel>
+                                        </p-tabView>
+                                    </p-tabPanel>
+
+                                    <p-tabPanel header="{{'consultation.diagnostic' | translate}}">
+                                                <div class="p-col">
+                                                    <div class="grid">
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="1">Ref<span style="color: red;">*</span></label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Ref"
+                                                                               id="1" [(ngModel)]="diagnosticElement.ref" autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validDiagnosticRef}"  >
+                                                                        <small class='p-error' *ngIf='!validDiagnosticRef'>Ref est obligatoire.</small>
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="2">Date diagnostic</label>
+                                                                        <p-calendar appendTo="body" id="2"  [showTime]="true" [showSeconds]="false" placeholder="Date diagnostic" [(ngModel)]="diagnosticElement.dateDiagnostic"
+                                                                                dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="3">Description</label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Description"
+                                                                               id="3" [(ngModel)]="diagnosticElement.description" autofocus   >
+                                                                        
+                                                                    </div>
+                                                        <div class="field col-12 md:col-1">
+                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addDiagnostic()"></button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="p-col">
+                                                    <div class="card">
+                                                        <p-table [value]="item.diagnostic" [scrollable]="true" scrollHeight="200px">
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                                <th>Ref</th>
+                                                                                <th>Date diagnostic</th>
+                                                                                <th>Description</th>
+                                                                    <th>Actions</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-p>
+                                                                <tr>
+                                                                                <td>{{p.ref}}</td>
+                                                                                <td>{{p.dateDiagnostic | date: dateFormatColumn}}</td>
+                                                                                <td>{{p.description}}</td>
+                                                                    <td>
+                                                                        <button (click)="deleteDiagnostic(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
+                                                                        <button (click)="editDiagnostic(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+
+                                                </div>
+                                    </p-tabPanel>
+
+                                    <p-tabPanel header="{{'consultation.syntheseMedicale' | translate}}">
+                                                <div class="p-col">
+                                                    <div class="grid">
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="1">Ref<span style="color: red;">*</span></label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Ref"
+                                                                               id="1" [(ngModel)]="syntheseMedicaleElement.ref" autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validSyntheseMedicaleRef}"  >
+                                                                        <small class='p-error' *ngIf='!validSyntheseMedicaleRef'>Ref est obligatoire.</small>
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="2">Date synthese medicale</label>
+                                                                        <p-calendar appendTo="body" id="2"  [showTime]="true" [showSeconds]="false" placeholder="Date synthese medicale" [(ngModel)]="syntheseMedicaleElement.dateSyntheseMedicale"
+                                                                                dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-6">
+                                                                        <label for="3">Description</label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Description"
+                                                                               id="3" [(ngModel)]="syntheseMedicaleElement.description" autofocus   >
+                                                                        
+                                                                    </div>
+                                                        <div class="field col-12 md:col-1">
+                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addSyntheseMedicale()"></button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="p-col">
+                                                    <div class="card">
+                                                        <p-table [value]="item.syntheseMedicale" [scrollable]="true" scrollHeight="200px">
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                                <th>Ref</th>
+                                                                                <th>Date synthese medicale</th>
+                                                                                <th>Description</th>
+                                                                    <th>Actions</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-p>
+                                                                <tr>
+                                                                                <td>{{p.ref}}</td>
+                                                                                <td>{{p.dateSyntheseMedicale | date: dateFormatColumn}}</td>
+                                                                                <td>{{p.description}}</td>
+                                                                    <td>
+                                                                        <button (click)="deleteSyntheseMedicale(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
+                                                                        <button (click)="editSyntheseMedicale(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+
+                                                </div>
+                                    </p-tabPanel>
+
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-flexbox">
+
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check"  (click)="save()"></button>
+
+
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+
+
+                </div>
+            </ng-template>
+
+    </p-dialog>

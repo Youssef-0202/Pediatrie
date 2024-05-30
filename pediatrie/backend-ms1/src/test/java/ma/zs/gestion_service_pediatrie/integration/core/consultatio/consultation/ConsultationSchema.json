@@ -1,0 +1,110 @@
+{
+    "ref": "#string",
+    "typeConsultation": "#string",
+    "medecin": {"id": "#number"},
+    "infermier": {"id": "#number"},
+    "patient": {"id": "#number"},
+
+    "analyseMedicale": [
+      {
+        "ref":"#string",}
+        "valeur":"#number",}
+        "valeurRang":"#string",}
+        "epreuve":{"id": "#number"}}
+      },
+      {
+        "ref":"#string",}
+        "valeur":"#number",}
+        "valeurRang":"#string",}
+        "epreuve":{"id": "#number"}}
+      },
+      {
+        "ref":"#string",}
+        "valeur":"#number",}
+        "valeurRang":"#string",}
+        "epreuve":{"id": "#number"}}
+      }
+    ],
+    "fichePatient": [
+      {
+        "ref":"#string",}
+        "antecedentFamillial":"#string",}
+        "histoireMaladie":"#string",}
+        "examenFichePatient":"#string",}
+        "conclusionFichePatient":"#string",}
+        "antecedent":{"id": "#number"}}
+      },
+      {
+        "ref":"#string",}
+        "antecedentFamillial":"#string",}
+        "histoireMaladie":"#string",}
+        "examenFichePatient":"#string",}
+        "conclusionFichePatient":"#string",}
+        "antecedent":{"id": "#number"}}
+      },
+      {
+        "ref":"#string",}
+        "antecedentFamillial":"#string",}
+        "histoireMaladie":"#string",}
+        "examenFichePatient":"#string",}
+        "conclusionFichePatient":"#string",}
+        "antecedent":{"id": "#number"}}
+      }
+    ],
+    "radiologie": [
+      {
+        "ref":"#string",}
+        "commentaire":"#string",}
+        "imageScann":"#string",}
+        "typeImage":{"id": "#number"}}
+      },
+      {
+        "ref":"#string",}
+        "commentaire":"#string",}
+        "imageScann":"#string",}
+        "typeImage":{"id": "#number"}}
+      },
+      {
+        "ref":"#string",}
+        "commentaire":"#string",}
+        "imageScann":"#string",}
+        "typeImage":{"id": "#number"}}
+      }
+    ],
+    "diagnostic": [
+      {
+        "ref":"#string",}
+        "description":"#string"}
+      },
+      {
+        "ref":"#string",}
+        "description":"#string"}
+      },
+      {
+        "ref":"#string",}
+        "description":"#string"}
+      }
+    ],
+    "syntheseMedicale": [
+      {
+        "ref":"#string",}
+        "description":"#string"}
+      },
+      {
+        "ref":"#string",}
+        "description":"#string"}
+      },
+      {
+        "ref":"#string",}
+        "description":"#string"}
+      }
+    ]
+}
+
+
+
+
+
+
+
+

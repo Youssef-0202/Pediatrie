@@ -1,0 +1,63 @@
+<!-- db/changelog-1.1-container.xml -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <!-- Create Container Table -->
+    <changeSet id="1" author="your-name">
+    <createTable tableName="antecedent">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+        <column name="ref" type="VARCHAR(500)"/>
+        <column name="allergie" type="VARCHAR(500)"/>
+        <column name="etat_psy" type="VARCHAR(500)"/>
+        <column name="respiratoire" type="VARCHAR(500)"/>
+        <column name="alimentation" type="VARCHAR(500)"/>
+        <column name="mouvement" type="VARCHAR(500)"/>
+        <column name="sommeil" type="VARCHAR(500)"/>
+
+        <column name="groupe_sanguin_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+  </changeSet>
+
+    <!-- Add foreign key constraint -->
+  <changeSet id="2" author="your-name">
+      <addForeignKeyConstraint
+              baseTableName="antecedent"
+              baseColumnNames="groupe_sanguin_id"
+              referencedTableName="groupe_sanguin"
+              referencedColumnNames="id"
+              constraintName="fk_antecedent_groupe_sanguin"/>
+
+  </changeSet>
+
+    <!-- Create Sequence for ContainerType -->
+  <changeSet id="3" author="your-name">
+    <createSequence sequenceName="antecedent_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <!-- Load Data from CSV -->
+  <changeSet id="4" author="your-name">
+    <loadData
+            file="classpath:/db/migration/data/dossie/Antecedent.csv"
+            tableName="antecedent">
+      <column name="id" type="NUMERIC"/>
+          <column name="ref" type="STRING"/>
+          <column name="allergie" type="STRING"/>
+          <column name="etat_psy" type="STRING"/>
+          <column name="respiratoire" type="STRING"/>
+          <column name="alimentation" type="STRING"/>
+          <column name="mouvement" type="STRING"/>
+          <column name="sommeil" type="STRING"/>
+        <column name="groupe_sanguin" type="BIGINT"/>
+    </loadData>
+  </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,16 @@
+{
+    "ref": "#string",
+    "valeur": "#number",
+    "valeurRang": "#string",
+    "epreuve": {"id": "#number"},
+    "consultation": {"id": "#number"}
+
+}
+
+
+
+
+
+
+
+
